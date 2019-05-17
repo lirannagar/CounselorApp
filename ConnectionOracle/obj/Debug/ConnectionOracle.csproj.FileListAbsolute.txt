@@ -1,0 +1,14 @@
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\bin\Debug\ConnectionOracle.dll.config
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\bin\Debug\ConnectionOracle.dll
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\bin\Debug\ConnectionOracle.pdb
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\obj\Debug\ConnectionOracle.csprojResolveAssemblyReference.cache
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\obj\Debug\ConnectionOracle.dll
+C:\Users\Liran\Desktop\CounselorApp\ConnectionOracle\obj\Debug\ConnectionOracle.pdb
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\bin\Debug\ConnectionOracle.dll.config
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\bin\Debug\ConnectionOracle.dll
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\bin\Debug\ConnectionOracle.pdb
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\obj\Debug\ConnectionOracle.csprojResolveAssemblyReference.cache
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\obj\Debug\ConnectionOracle.dll
+C:\Users\Liran\Desktop\CounselorApp-master\ConnectionOracle\obj\Debug\ConnectionOracle.pdb

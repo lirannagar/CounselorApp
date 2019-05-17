@@ -1,0 +1,31 @@
+﻿2019-04-24 17:07:31.705 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-04-24 17:07:32.559 [INFO]    OpenConnection()
+2019-04-24 17:07:32.607 [INFO]    SwitchAdminUser()
+2019-04-24 22:47:33.631 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-04-24 22:47:34.028 [INFO]    OpenConnection()
+2019-04-24 22:47:34.060 [INFO]    SwitchAdminUser()
+2019-04-24 22:49:25.494 [INFO]    ClickUploadVulnerableWebButton()
+2019-04-24 22:50:13.694 [INFO]    ClickUploadVulnerableWebButton()
+2019-04-24 22:50:15.069 [INFO]    ClickUploadButtonVulnerbale()
+2019-04-24 22:50:26.990 [INFO]    ClickUploadVulnerableWebButton()
+2019-04-24 22:53:52.706 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-04-24 22:53:53.137 [INFO]    OpenConnection()
+2019-04-24 22:53:53.171 [INFO]    SwitchAdminUser()
+2019-04-24 22:54:35.190 [INFO]    ClickUploadVulnerableWebButton()
+2019-04-24 22:57:28.542 [INFO]    ClickUploadVulnerableWebButton()
+2019-04-24 22:57:44.143 [INFO]    ClickUploadButtonVulnerbale()
+2019-05-17 16:34:56.789 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-05-17 16:34:57.345 [INFO]    OpenConnection()
+2019-05-17 16:34:57.383 [INFO]    SwitchAdminUser()
+2019-05-17 16:46:02.951 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-05-17 16:46:03.523 [INFO]    OpenConnection()
+2019-05-17 16:46:03.565 [INFO]    SwitchAdminUser()
+2019-05-17 16:46:09.848 [INFO]    ClickUploadVulnerableWebButton()
+2019-05-17 16:55:35.050 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-05-17 16:55:35.599 [INFO]    OpenConnection()
+2019-05-17 16:55:35.654 [INFO]    SwitchAdminUser()
+2019-05-17 16:55:41.263 [INFO]    ClickUploadVulnerableWebButton()
+2019-05-17 16:56:46.272 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-05-17 16:56:46.803 [INFO]    OpenConnection()
+2019-05-17 16:56:46.889 [INFO]    SwitchAdminUser()
+2019-05-17 16:56:51.585 [INFO]    ClickUploadProtectedWebButton()

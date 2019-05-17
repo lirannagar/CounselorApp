@@ -1,0 +1,17 @@
+﻿<Window x:Class="CounselorApp.Administrator.MenageAdvice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CounselorApp.Administrator"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MenageAdvice" Height="216" Width="231.2">
+    <Grid Margin="0,0,-0.4,0.4">
+        <ComboBox x:Name="ComboBoxAdvices" HorizontalAlignment="Left" Margin="42,41,0,0" VerticalAlignment="Top" Width="149" Height="20" FontSize="10">
+            <ComboBoxItem IsSelected="True" Content="Select Advice To Edit"/>
+        </ComboBox>
+        <Button x:Name="EditAdviceButton" Content="Edit Advice" HorizontalAlignment="Left" Margin="42,74,0,0" VerticalAlignment="Top" Width="149" Click="ClickEditAdviceButton"/>
+        <Button x:Name="AddNewAdviceButton" Content="Add New Advice" HorizontalAlignment="Left" Margin="42,133,0,0" VerticalAlignment="Top" Width="149" Click="ClickAddNewAdviceButton"/>
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="CounselorApp.Administrator.AdminMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CounselorApp.Administrator"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Admin Window" Height="183.942" Width="279.197">
+    <Grid>
+        <Button x:Name="SecurityAdviserButton" Content="Menage Security Adviser" HorizontalAlignment="Left" Margin="68,47,0,0" VerticalAlignment="Top" Width="146" Click="ClickSecurityAdviser"/>
+        <Button x:Name="AdvisesButton" Content="Menage Advises" HorizontalAlignment="Left" Margin="68,88,0,0" VerticalAlignment="Top" Width="146" Click="ClickAdvisesButton"/>
+    </Grid>
+</Window>
