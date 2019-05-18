@@ -6,20 +6,18 @@
         xmlns:local="clr-namespace:CounselorApp.Administrator"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Add New Security Advice" Height="449.73" Width="504.8">
+        Title="Add New Security Advice" Height="449.73" Width="558.4">
     <Grid>
         <Label x:Name="AddNameLabel"   Content="Name:" HorizontalAlignment="Left" Margin="20,48,0,0" VerticalAlignment="Top"/>
         <Label x:Name="BodyLabel"   Content="Body:" HorizontalAlignment="Left" Margin="20,90,0,0" VerticalAlignment="Top"/>
         <Label x:Name="WebServerProtectedLabel"   Content="Web Server Protected:" HorizontalAlignment="Left" Margin="20,350,0,0" VerticalAlignment="Top"/>
         <Label x:Name="WebServerVulnerableLabel"   Content="Vulnerable Web Server:" HorizontalAlignment="Left" Margin="20,320,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Margin="70,52,0,0" VerticalAlignment="Top" Width="154"/>
-        <TextBox x:Name="BodyTextBox" HorizontalAlignment="Left" Margin="70,90,0,0" VerticalAlignment="Top" Width="154" Height="225"/>
-        <TextBox x:Name="VulnerableWebTextBox" HorizontalAlignment="Left" Margin="160,325,0,0" VerticalAlignment="Top" Width="154"/>
-        <TextBox x:Name="ProtectedWebTextBox" HorizontalAlignment="Left" Margin="160,355,0,0" VerticalAlignment="Top" Width="154"/>
-        <Button x:Name="UploadVulnerableWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="319,324,0,0" VerticalAlignment="Top" Width="85" Click="ClickUploadVulnerableWebButton"/>
-        <Button x:Name="UploadProtectedWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="319,354,0,0" VerticalAlignment="Top" Width="85" Click="ClickUploadProtectedWebButton"/>
-        <Button x:Name="UploadFile" Content="Upload" HorizontalAlignment="Left" Margin="160,387,0,0" VerticalAlignment="Top" Width="244" Click="UploadButton"/>
-        <Button x:Name="UploadButtonVulnerbale" Content="Upload" HorizontalAlignment="Left" Margin="409,323,0,0" VerticalAlignment="Top" Width="49" Click="ClickUploadButtonVulnerbale"/>
-        <Button x:Name="UploadButtonProtected" Content="Upload" HorizontalAlignment="Left" Margin="409,353,0,0" VerticalAlignment="Top" Width="49" Click="ClickUploadButtonProtected"/>
+        <TextBox x:Name="BodyTextBox" HorizontalAlignment="Left" Margin="70,90,0,0" VerticalAlignment="Top" Width="421" Height="225"/>
+        <TextBox x:Name="VulnerableWebTextBox" HorizontalAlignment="Left" Margin="160,325,0,0" VerticalAlignment="Top" Width="218"/>
+        <TextBox x:Name="ProtectedWebTextBox" HorizontalAlignment="Left" Margin="160,355,0,0" VerticalAlignment="Top" Width="218"/>
+        <Button x:Name="UploadVulnerableWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="383,324,0,0" VerticalAlignment="Top" Width="78" Click="ClickUploadVulnerableWebButton"/>
+        <Button x:Name="UploadProtectedWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="383,354,0,0" VerticalAlignment="Top" Width="78" Click="ClickUploadProtectedWebButton"/>
+        <Button x:Name="UploadFile" Content="Upload" HorizontalAlignment="Left" Margin="160,387,0,0" VerticalAlignment="Top" Width="301" Click="UploadButton"/>
     </Grid>
 </Window>

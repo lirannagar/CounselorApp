@@ -30,13 +30,6 @@ namespace CounselorApp.Administrator {
                 var dialog = new FolderBrowserDialog();
                 dialog.ShowDialog();
                 VulnerableWebTextBox.Text = dialog.SelectedPath;
-                string className = "DoS";
-                string nameSpace = "CodeGenerator";
-                string project = "CodeGenerator";
-                var cds = new ClassGenerator();
-                CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace);
-                cds.GenerateCode(newClassCode, className);
-                cds.AddClassToSolution(className, Directory.GetCurrentDirectory(),project);
                 Logger.Instance.Info("ClickUploadVulnerableWebButton()");
             }
             catch (Exception ex) {
@@ -58,6 +51,28 @@ namespace CounselorApp.Administrator {
         
         private void UploadButton(object sender, RoutedEventArgs e) {
             try {
+                string sourceFile = ProtectedWebTextBox.Text;
+                string destinationFile = ProtectedWebTextBox.Text;
+                System.Collections.Generic.List<string> listPathProtectedWeb = destinationFile.Split('\\').ToList();
+                var nameDirectory = listPathProtectedWeb[listPathProtectedWeb.Count - 1];
+                Directory.Move(ProtectedWebTextBox.Text, Directory.GetCurrentDirectory() + '\\' + nameDirectory);
+                UploadProtectedWebButton.IsEnabled = false;
+                ProtectedWebTextBox.IsEnabled = false;
+
+                destinationFile = VulnerableWebTextBox.Text;
+                System.Collections.Generic.List<string> listPathVulnerableWeb = destinationFile.Split('\\').ToList();
+                nameDirectory = listPathVulnerableWeb[listPathVulnerableWeb.Count - 1];
+                Directory.Move(VulnerableWebTextBox.Text, Directory.GetCurrentDirectory() + '\\' + nameDirectory);
+                UploadVulnerableWebButton.IsEnabled = false;
+                VulnerableWebTextBox.IsEnabled = false;
+
+                string className = "DoS";
+                string nameSpace = "CodeGenerator";
+                string project = "CodeGenerator";
+                var cds = new ClassGenerator();
+                CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace);
+                cds.GenerateCode(newClassCode, className);
+                cds.AddClassToSolution(className, Directory.GetCurrentDirectory(),project);              
                 Logger.Instance.Info("UploadButton()");
             }
             catch (Exception ex) {
@@ -65,36 +80,5 @@ namespace CounselorApp.Administrator {
             }
         }
         
-        private void ClickUploadButtonProtected(object sender, RoutedEventArgs e) {
-            try {
-                string sourceFile = ProtectedWebTextBox.Text;
-                string destinationFile = ProtectedWebTextBox.Text;
-                System.Collections.Generic.List<string> listPath = destinationFile.Split('\\').ToList();
-                var nameDirectory = listPath[listPath.Count - 1];
-                Directory.Move(ProtectedWebTextBox.Text, Directory.GetCurrentDirectory() +'\\'+ nameDirectory);
-                UploadProtectedWebButton.IsEnabled = false;
-                UploadButtonProtected.IsEnabled = false;
-                ProtectedWebTextBox.IsEnabled = false;
-                Logger.Instance.Info("ClickUploadButtonProtected()");
-            }
-            catch (Exception ex) {
-                Logger.Instance.Error("Error while trying to Click Upload Button Protected  ", ex);
-            }
-        }
-        
-        private void ClickUploadButtonVulnerbale(object sender, RoutedEventArgs e) {
-            try {
-                string destinationFile = VulnerableWebTextBox.Text;
-                System.Collections.Generic.List<string> listPath = destinationFile.Split('\\').ToList();
-                var nameDirectory = listPath[listPath.Count - 1];
-                Directory.Move(VulnerableWebTextBox.Text, Directory.GetCurrentDirectory() + '\\' + nameDirectory);
-                UploadVulnerableWebButton.IsEnabled = false;
-                UploadButtonVulnerbale.IsEnabled = false;
-                VulnerableWebTextBox.IsEnabled = false;
-            }
-            catch (Exception ex) {
-                Logger.Instance.Error("Error while trying to Click Upload Button Vulnerbale  ", ex);
-            }
-        }
     }
 }
