@@ -29,3 +29,7 @@
 2019-05-17 16:56:46.803 [INFO]    OpenConnection()
 2019-05-17 16:56:46.889 [INFO]    SwitchAdminUser()
 2019-05-17 16:56:51.585 [INFO]    ClickUploadProtectedWebButton()
+2019-05-18 13:57:34.206 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-05-18 13:57:34.812 [INFO]    OpenConnection()
+2019-05-18 13:57:34.844 [INFO]    SwitchAdminUser()
+2019-05-18 13:57:44.231 [INFO]    ClickUploadVulnerableWebButton()

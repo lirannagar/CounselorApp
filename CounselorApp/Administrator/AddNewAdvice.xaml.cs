@@ -30,12 +30,13 @@ namespace CounselorApp.Administrator {
                 var dialog = new FolderBrowserDialog();
                 dialog.ShowDialog();
                 VulnerableWebTextBox.Text = dialog.SelectedPath;
-                string className = "AddNewAdvice";
-                string nameSpace = "CounselorApp.Administrator";
-                var cds = new WPFAddNewAdviceGeneratorCode();
+                string className = "DoS";
+                string nameSpace = "CodeGenerator";
+                string project = "CodeGenerator";
+                var cds = new ClassGenerator();
                 CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace);
                 cds.GenerateCode(newClassCode, className);
-                cds.SwitchClass(className, Directory.GetCurrentDirectory());
+                cds.AddClassToSolution(className, Directory.GetCurrentDirectory(),project);
                 Logger.Instance.Info("ClickUploadVulnerableWebButton()");
             }
             catch (Exception ex) {

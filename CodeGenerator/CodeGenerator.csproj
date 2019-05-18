@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\DoS.cs" />
+    <Compile Include="ClassGenerator.cs" />
     <Compile Include="WPFAddNewAdviceGeneratorCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

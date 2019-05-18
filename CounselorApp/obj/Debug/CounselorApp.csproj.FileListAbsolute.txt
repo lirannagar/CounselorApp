@@ -74,3 +74,5 @@ C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.P
 C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.csproj.GenerateResource.Cache
 C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.exe
 C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.pdb
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CodeGenerator.dll
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CodeGenerator.pdb

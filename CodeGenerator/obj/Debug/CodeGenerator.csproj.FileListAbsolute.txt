@@ -3,3 +3,8 @@ C:\Users\Liran\Desktop\CounselorApp-master\CodeGenerator\bin\Debug\CodeGenerator
 C:\Users\Liran\Desktop\CounselorApp-master\CodeGenerator\obj\Debug\CodeGenerator.csprojResolveAssemblyReference.cache
 C:\Users\Liran\Desktop\CounselorApp-master\CodeGenerator\obj\Debug\CodeGenerator.dll
 C:\Users\Liran\Desktop\CounselorApp-master\CodeGenerator\obj\Debug\CodeGenerator.pdb
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\CodeGenerator.dll
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\CodeGenerator.pdb
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.dll
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.pdb
