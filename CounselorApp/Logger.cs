@@ -4,7 +4,7 @@ namespace CounselorApp
 {
     public class Logger
     {
-        private static SimpleLogger instance ;
+        private static SimpleLogger instance;
 
         public static SimpleLogger Instance
         {

@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace CodeGenerator
 {
-    public partial class WPFAddNewAdviceGeneratorCode
+    public partial class WPFCodeGenerator
     {
 
         public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace)
@@ -41,7 +41,6 @@ namespace CodeGenerator
             codedomsamplenamespace.Imports.Add(import8);
             #endregion Imports Creation
 
-            //Class Creation
             #region Class Creation
             var newType = new CodeTypeDeclaration(className)
             {
@@ -211,9 +210,6 @@ namespace CodeGenerator
 
             #endregion Methods Creation
 
-
-
-
             constructor.Statements.Add(init);
             newType.Members.Add(clickUploadVulnerableWeb);
             newType.Members.Add(ClickUploadVulnerableWebMethod);
@@ -224,9 +220,6 @@ namespace CodeGenerator
             newType.Members.Add(constructor);
             codedomsamplenamespace.Types.Add(newType);
             compileUnit.Namespaces.Add(codedomsamplenamespace);
-
-
-
 
             // Return the CompileUnit
             //
@@ -310,12 +303,11 @@ namespace CodeGenerator
                 File.Delete(newPath + className + ".xaml.cs");
             }
             File.Move(mainPath + "\\" + className + ".xaml.cs", newPath + "\\" + className + ".xaml.cs");
-            var p = new Microsoft.Build.Evaluation.Project();
-            //csprojObjectPath + nameProject + ".csproj"
+            var p = new Microsoft.Build.Evaluation.Project(csprojObjectPath + nameProject + ".csproj");
             p.AddItem("Compile", newPath + "\\" + className + ".xaml.cs");
             var x = p.GetItems("Compile").Where(a => a.UnevaluatedInclude == newPath + "\\" + className + ".xaml.cs").FirstOrDefault();
             p.RemoveItem(x);
-            //p.Save();
+            p.Save();
         }
     }
 

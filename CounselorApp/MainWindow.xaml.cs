@@ -20,14 +20,10 @@ namespace CounselorApp
         const string CHOOSE_OPETION_STRING = "Choose role";
         const string REGULAR_USER_STRING = "Regular user";
         #endregion Control Mapping
-    
-        
-
 
         #region Members
         private OracleCommand cmd;
         #endregion Members
-
 
         #region Constructor
         public MainWindow()
@@ -37,27 +33,14 @@ namespace CounselorApp
             SwitchAdminUser();
             InitializeComponent();
 
-            //Process p = new Process();
-            //p.StartInfo.WorkingDirectory = @"C:\Users\Liran\Desktop\WebTest";
-            //p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            //p.StartInfo.FileName = "cmd.exe";
-            //p.StartInfo.Arguments = "/c node app.js";
-            //p.Start();
-
-
-
-            var admin = new AddNewAdvice();
+            var admin = new SecurityAdviceWidnow("Sql");
             admin.Show();
             this.Close();
-
-
         }
         #endregion Constructor
 
 
         #region Private Methods
-
-
         /// <summary>
         /// Open Connection with the oracle database
         /// </summary>
@@ -71,7 +54,7 @@ namespace CounselorApp
             }
             catch (OracleException ex)
             {
-                Logger.Instance.Error("Exeption while trying to open DB\n Details:\n" , ex);
+                Logger.Instance.Error("Exeption while trying to open DB\n Details:\n", ex);
             }
         }
         /// <summary>
@@ -111,17 +94,17 @@ namespace CounselorApp
             }
             catch (Exception ex)
             {
-                Logger.Instance.Error("Error while tyring to click log in " , ex);
+                Logger.Instance.Error("Error while tyring to click log in ", ex);
             }
         }
 
-            /// <summary>
-            /// Check if one of the inputs are empty
-            /// </summary>
-            /// <param name="inputUserName">User name input</param>
-            /// <param name="inputPassword">Password user input</param>
-            /// <param name="_role">Role user input</param>
-            private void CheckInputLogInWindow(string _inputUserName, string _inputPassword, string _role)
+        /// <summary>
+        /// Check if one of the inputs are empty
+        /// </summary>
+        /// <param name="inputUserName">User name input</param>
+        /// <param name="inputPassword">Password user input</param>
+        /// <param name="_role">Role user input</param>
+        private void CheckInputLogInWindow(string _inputUserName, string _inputPassword, string _role)
         {
             if (string.IsNullOrEmpty(_inputUserName))
             {
@@ -155,7 +138,7 @@ namespace CounselorApp
             }
             catch (OracleException ex)
             {
-                Logger.Instance.Error("Exption while trying to chenge admin user\n Details:\n" , ex);
+                Logger.Instance.Error("Exption while trying to chenge admin user\n Details:\n", ex);
             }
         }
         /// <summary>

@@ -16,7 +16,7 @@
         <TextBox x:Name="UserNameText" HorizontalAlignment="Left" Height="23" Margin="14,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Grid.ColumnSpan="2"/>
         <Label x:Name="passwordLabel" Content="Password:" HorizontalAlignment="Left" Margin="12,101,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <PasswordBox x:Name="PasswordText" HorizontalAlignment="Left" Margin="14,124,0,0" VerticalAlignment="Top" Width="175" Height="21" Grid.ColumnSpan="2"/>
-        <Button x:Name="LogInButton" Content="Log In" HorizontalAlignment="Left" Margin="9.6,211,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="ClickLogInButton"/>
+        <Button x:Name="LogInButton" Content="Log In" HorizontalAlignment="Left" Margin="9.6,208,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="ClickLogInButton"/>
         <ComboBox x:Name="RoleComboBox" HorizontalAlignment="Left" Margin="14,158,0,0" VerticalAlignment="Top" Width="175" Grid.ColumnSpan="2" >
             <ComboBoxItem IsSelected="True" Content="Choose role"/>
             <ComboBoxItem  Content="Regular User"/>

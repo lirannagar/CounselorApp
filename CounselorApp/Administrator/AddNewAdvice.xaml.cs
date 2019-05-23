@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CounselorApp.Administrator {
+namespace CounselorApp.Administrator
+{
     using System;
     using CodeGenerator;
     using System.Collections.Generic;
@@ -17,68 +18,133 @@ namespace CounselorApp.Administrator {
     using System.Linq;
     using System.Windows;
     using System.CodeDom;
-    
-    
-    public partial class AddNewAdvice : Window {
-        
-        public AddNewAdvice() {
+    using ConnectionOracle;
+    using Oracle.ManagedDataAccess.Client;
+    using System.Windows.Documents;
+    using Xceed.Wpf.Toolkit;
+
+
+
+    public partial class AddNewAdvice : Window
+    {
+
+
+        private OracleCommand cmd;
+
+
+        public AddNewAdvice()
+        {
+      
             InitializeComponent();
+            cmd = new OracleCommand();
+            Logger.Instance.Info("AddNewAdvice()");
         }
-        
-        private void ClickUploadVulnerableWebButton(object sender, RoutedEventArgs e) {
-            try {
+
+        private void ClickUploadVulnerableWebButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
                 var dialog = new FolderBrowserDialog();
                 dialog.ShowDialog();
                 VulnerableWebTextBox.Text = dialog.SelectedPath;
                 Logger.Instance.Info("ClickUploadVulnerableWebButton()");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Logger.Instance.Error("Error while trying to Click Upload Vulnerable Web Button  ", ex);
             }
         }
-        
-        private void ClickUploadProtectedWebButton(object sender, RoutedEventArgs e) {
-            try {
+
+        private void ClickUploadProtectedWebButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
                 var dialog = new FolderBrowserDialog();
                 dialog.ShowDialog();
                 ProtectedWebTextBox.Text = dialog.SelectedPath;
                 Logger.Instance.Info("ClickUploadProtectedWebButton()");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Logger.Instance.Error("Error while trying to Click Upload Protected Web Button ", ex);
             }
         }
-        
-        private void UploadButton(object sender, RoutedEventArgs e) {
-            try {
+
+        private void UploadButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                UploadFile.IsEnabled = false;
                 string sourceFile = ProtectedWebTextBox.Text;
                 string destinationFile = ProtectedWebTextBox.Text;
-                System.Collections.Generic.List<string> listPathProtectedWeb = destinationFile.Split('\\').ToList();
+                List<string> listPathProtectedWeb = destinationFile.Split('\\').ToList();
                 var nameDirectory = listPathProtectedWeb[listPathProtectedWeb.Count - 1];
                 Directory.Move(ProtectedWebTextBox.Text, Directory.GetCurrentDirectory() + '\\' + nameDirectory);
                 UploadProtectedWebButton.IsEnabled = false;
                 ProtectedWebTextBox.IsEnabled = false;
 
                 destinationFile = VulnerableWebTextBox.Text;
-                System.Collections.Generic.List<string> listPathVulnerableWeb = destinationFile.Split('\\').ToList();
+                List<string> listPathVulnerableWeb = destinationFile.Split('\\').ToList();
                 nameDirectory = listPathVulnerableWeb[listPathVulnerableWeb.Count - 1];
                 Directory.Move(VulnerableWebTextBox.Text, Directory.GetCurrentDirectory() + '\\' + nameDirectory);
                 UploadVulnerableWebButton.IsEnabled = false;
                 VulnerableWebTextBox.IsEnabled = false;
+                
+                string bodyAdviceText = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd).Text;
+                cmd.Connection = OracleSingletonConnection.Instance;
+                cmd.CommandText = "SELECT advice_seq.nextval from dual";
+                string id = Convert.ToInt32(cmd.ExecuteScalar()).ToString();
 
-                string className = "DoS";
-                string nameSpace = "CodeGenerator";
-                string project = "CodeGenerator";
-                var cds = new ClassGenerator();
-                CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace);
-                cds.GenerateCode(newClassCode, className);
-                cds.AddClassToSolution(className, Directory.GetCurrentDirectory(),project);              
+                InsertToDB(id,NameTextBox.Text, bodyAdviceText, ProtectedWebTextBox.Text, VulnerableWebTextBox.Text , SourceAdviceTextBox.Text);
+               
+                //string className = "DoS";
+                //string nameSpace = "CodeGenerator";
+                //string project = "CodeGenerator";
+                //var cds = new ClassGenerator();
+                //CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace);
+                //cds.GenerateCode(newClassCode, className);
+                //cds.AddClassToSolution(className, Directory.GetCurrentDirectory(), project);
                 Logger.Instance.Info("UploadButton()");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Logger.Instance.Error("Error while trying to Click Upload Protected Web Button  ", ex);
             }
         }
-        
+
+        private void InsertToDB(string id, string Name,string body , string pathProtected, string pathVulnerable, string source)
+        {
+            try
+            {
+                cmd.Connection = OracleSingletonConnection.Instance;
+                string newAdviceString = "INSERT INTO advises "
+                 + "(id_advise, advice_name, advice_text, path_protected_web, path_not_protected_web, SOURCE_ADVICE) "
+                 + "VALUES "
+                 + "("+ id + ", '" + Name + "' , '" + body + "', '" + pathProtected + "', '" + pathVulnerable + "', '"+source+"')";
+                cmd.CommandText = newAdviceString;
+                cmd.ExecuteNonQuery();
+                Logger.Instance.Info("InsertToDB (" + Name + ")");
+            }catch(Exception ex)
+            {
+                throw new Exception("Exception while trying to InsertToDB", ex);
+            }
+
+        }
+        private void ClickOnBack(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var adminWindow = new MenageAdvice();
+                adminWindow.Show();
+                this.Close();
+                Logger.Instance.Info("ClickOnBack()");
+            }catch(Exception ex)
+            {
+                Logger.Instance.Error("Exception while trying to click on back button", ex);
+            }            
+        }
     }
+
+
+
 }

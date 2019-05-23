@@ -1,12 +1,9 @@
 ﻿using ConnectionOracle;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.IO;
+using System.Diagnostics;
 using System.Windows;
-using System.Windows.Xps.Packaging;
-using Microsoft.Office.Interop.Word;
-using Microsoft.Win32;
-using Word = Microsoft.Office.Interop.Word;
+using System.Windows.Documents;
 
 namespace CounselorApp.Advises
 {
@@ -20,9 +17,12 @@ namespace CounselorApp.Advises
         #region Control Mapping
         #endregion Control Mapping
 
-
         #region Members
         private OracleCommand cmd;
+        private TextRange textRangebody;
+        private string sourceWeb;
+        private string advicePathWebNotProected;
+        private string advicePathWebProected;
         #endregion Members
 
 
@@ -31,12 +31,16 @@ namespace CounselorApp.Advises
         {
             try
             {
-                cmd = new OracleCommand();
-                string adviceBody = GetAdviceBody(adviceName);
-                string advicePathWebNotProected = GetPathWebNotProtected(adviceName);
-                string advicePathWebProected = GetPathWebProtected(adviceName);
                 InitializeComponent();
-                lebalText.Content = adviceBody;
+                cmd = new OracleCommand();
+                textRangebody = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd);
+
+                textRangebody.Text = GetAdviceBody(adviceName);
+                
+                this.advicePathWebNotProected = GetPathWebNotProtected(adviceName);
+                this.advicePathWebProected = GetPathWebProtected(adviceName);
+                this.sourceWeb = GetSource(adviceName);
+               
             }
             catch (Exception ex)
             {
@@ -47,7 +51,18 @@ namespace CounselorApp.Advises
 
 
         #region Private Methods
-
+        private void ClickOnOpenSource(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start(this.sourceWeb);
+                Logger.Instance.Info("ClickOnOpenSource("+this.sourceWeb+")");
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Error("Error while trying to open source advice", ex);
+            }
+        }
         private void ClickProtectedWeb(object sender, RoutedEventArgs e)
         {
             try
@@ -63,6 +78,7 @@ namespace CounselorApp.Advises
         {
             try
             {
+
                 Logger.Instance.Info("ClickVulnerableWeb()");
             }
             catch (Exception ex)
@@ -71,18 +87,49 @@ namespace CounselorApp.Advises
             }
         }
         /// <summary>
+        /// Get source advice
+        /// </summary>
+        /// <param name="nameAdvice">Name of attack</param>
+        /// <returns></returns>
+        private string GetSource(string nameAdvice)
+        {
+            try
+            {
+                cmd.Connection = OracleSingletonConnection.Instance;
+                string advice = "select advises.SOURCE_ADVICE"
+                    + " from advises"
+                    + " where advises.advice_name = '" + nameAdvice + "'";
+                cmd.CommandText = advice;
+                return Convert.ToString(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Exception while trying to get source", ex) ;
+            }
+           
+        }
+        /// <summary>
         /// Get advice body from oracle DB
         /// </summary>
         /// <param name="nameAdvice">name of advice</param>
         /// <returns></returns>
         private string GetAdviceBody(string nameAdvice)
         {
-            cmd.Connection = OracleSingletonConnection.Instance;
-            string advice = "select advises.advice_text"
-                + " from advises"
-                + " where advises.advice_name = '" + nameAdvice + "'";
-            cmd.CommandText = advice;
-            return Convert.ToString(cmd.ExecuteScalar());
+            try
+            {
+                cmd.Connection = OracleSingletonConnection.Instance;
+                string advice = "select advises.advice_text"
+                    + " from advises"
+                    + " where advises.advice_name = '" + nameAdvice + "'";
+                cmd.CommandText = advice;
+                return Convert.ToString(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception while trying to  Get Advice Body", ex);
+            }
+           
         }
         /// <summary>
         /// Get Path Web Not Protected from oracle DB
@@ -91,12 +138,20 @@ namespace CounselorApp.Advises
         /// <returns></returns>
         private string GetPathWebNotProtected(string nameAdvice)
         {
-            cmd.Connection = OracleSingletonConnection.Instance;
-            string advice = "select advises.PATH_NOT_PROTECTED_WEB"
-                + " from advises"
-                + " where advises.advice_name = '" + nameAdvice + "'";
-            cmd.CommandText = advice;
-            return Convert.ToString(cmd.ExecuteScalar());
+            try
+            {
+                cmd.Connection = OracleSingletonConnection.Instance;
+                string advice = "select advises.PATH_NOT_PROTECTED_WEB"
+                    + " from advises"
+                    + " where advises.advice_name = '" + nameAdvice + "'";
+                cmd.CommandText = advice;
+                return Convert.ToString(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception while trying to Get Path Web Not Protected", ex) ;
+            }
+ 
         }
         /// <summary>
         /// Get Path Web Protected from oracle DB
@@ -105,21 +160,27 @@ namespace CounselorApp.Advises
         /// <returns></returns>
         private string GetPathWebProtected(string nameAdvice)
         {
-
-            cmd.Connection = OracleSingletonConnection.Instance;
-            string advice = "select advises.PATH_PROTECTED_WEB"
-                + " from advises"
-                + " where advises.advice_name = '" + nameAdvice + "'";
-            cmd.CommandText = advice;
-            return Convert.ToString(cmd.ExecuteScalar());
+            try
+            {
+                cmd.Connection = OracleSingletonConnection.Instance;
+                string advice = "select advises.PATH_PROTECTED_WEB"
+                    + " from advises"
+                    + " where advises.advice_name = '" + nameAdvice + "'";
+                cmd.CommandText = advice;
+                return Convert.ToString(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception while trying to Get Path Web Protected", ex);
+            }
+          
         }
-
-
         #endregion Private Methods
 
         #region Public Methods
         #endregion Public Methods
 
+ 
     }
 
 
