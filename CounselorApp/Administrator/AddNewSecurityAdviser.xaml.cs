@@ -16,7 +16,9 @@ namespace CounselorApp.Administrator
         #region Members
         #endregion Members
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         #region Constructor
         public AddNewSecurityAdviser()
         {
