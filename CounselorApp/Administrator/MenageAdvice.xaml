@@ -11,7 +11,7 @@
         <ComboBox x:Name="ComboBoxAdvices" HorizontalAlignment="Left" Margin="42,41,0,0" VerticalAlignment="Top" Width="149" Height="20" FontSize="10">
             <ComboBoxItem IsSelected="True" Content="Select Advice To Edit"/>
         </ComboBox>
-        <Button x:Name="EditAdviceButton" Content="Edit Advice" HorizontalAlignment="Left" Margin="42,74,0,0" VerticalAlignment="Top" Width="149" Click="ClickEditAdviceButton"/>
+        <Button x:Name="EditAdviceButton" Content="Edit Advice" HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top" Width="149" Click="ClickEditAdviceButton" IsEnabled="True"/>
         <Button x:Name="AddNewAdviceButton" Content="Add New Advice" HorizontalAlignment="Left" Margin="42,133,0,0" VerticalAlignment="Top" Width="149" Click="ClickAddNewAdviceButton"/>
     </Grid>
 </Window>

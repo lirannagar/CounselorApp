@@ -13,6 +13,7 @@
             <ComboBoxItem IsSelected="True" Content="Choose Advice"/>
         </ComboBox>
         <Button x:Name="ShowAdviceButton" Content="Show Advice" HorizontalAlignment="Left" Margin="57,119,0,0" VerticalAlignment="Top" Width="149" Click="ClickShowAdvice"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="7,10,0,0" VerticalAlignment="Top" Width="44" Click="ClickOnBackButton"/>
 
     </Grid>
 </Window>

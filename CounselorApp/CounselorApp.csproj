@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CaunselotAppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -100,6 +103,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administrator\AddNewSecurityAdviser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administrator\AdminMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Advises\SecurityAdviceWidnow .xaml">
+    <Page Include="Advises\SecurityAdviceWidnow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +133,9 @@
     </Page>
     <Compile Include="Administrator\AddNewAdvice.xaml.cs">
       <DependentUpon>AddNewAdvice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddNewSecurityAdviser.xaml.cs">
+      <DependentUpon>AddNewSecurityAdviser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administrator\AdminMainWindow.xaml.cs">
       <DependentUpon>AdminMainWindow.xaml</DependentUpon>
@@ -139,8 +149,8 @@
     <Compile Include="Advises\AdviceMainWindow.xaml.cs">
       <DependentUpon>AdviceMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Advises\SecurityAdviceWidnow .xaml.cs">
-      <DependentUpon>SecurityAdviceWidnow .xaml</DependentUpon>
+    <Compile Include="Advises\SecurityAdviceWidnow.xaml.cs">
+      <DependentUpon>SecurityAdviceWidnow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -154,6 +164,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OracleSingletonConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -185,10 +196,6 @@
       <Project>{e2679c2d-f338-40f1-b26a-a13b5cb3c9a7}</Project>
       <Name>CodeGenerator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ConnectionOracle\ConnectionOracle.csproj">
-      <Project>{ACF98C9D-F072-4019-8961-5A0952A76E9A}</Project>
-      <Name>ConnectionOracle</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{FD0D1CE0-BFAA-404D-81AF-91A9C4A79872}</Project>
       <Name>Logger</Name>
@@ -197,8 +204,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="RegularUser\" />
+    <Resource Include="CaunselotAppIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

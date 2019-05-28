@@ -11,118 +11,13 @@ namespace CodeGenerator
 {
     public class ClassGenerator
     {
+        private string ipAddress;
+
         public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace)
         {
-            var compileUnit = new CodeCompileUnit();
+            CodeCompileUnit compileUnit = new CodeCompileUnit();
+            compileUnit = NodJSServerCode(compileUnit, className, classNameSpace);
 
-            var codedomsamplenamespace = new CodeNamespace(classNameSpace);
-
-            var firstimport = new CodeNamespaceImport("System.Diagnostics");
-            var secondImport = new CodeNamespaceImport("CodeGenerator");
-            var thirdImport = new CodeNamespaceImport("System.CodeDom");
-            var fourImport = new CodeNamespaceImport("System.Collections.Generic");
-            var fiveImport = new CodeNamespaceImport("System.IO");
-            var sixImport = new CodeNamespaceImport("System.Linq");
-            codedomsamplenamespace.Imports.Add(firstimport);
-            codedomsamplenamespace.Imports.Add(secondImport);
-            codedomsamplenamespace.Imports.Add(thirdImport);
-            codedomsamplenamespace.Imports.Add(fourImport);
-            codedomsamplenamespace.Imports.Add(firstimport);
-            codedomsamplenamespace.Imports.Add(sixImport);
-
-            var newType = new CodeTypeDeclaration(className) { Attributes = MemberAttributes.Public };
-            CodeMemberMethod mainMethod = new CodeMemberMethod()
-            {
-                Name = "Main",
-                Attributes = MemberAttributes.Public | MemberAttributes.Final | MemberAttributes.Static,
-                ReturnType = new CodeTypeReference("System.Void")
-            };
-            newType.Members.Add(mainMethod);
-            codedomsamplenamespace.Types.Add(newType);
-
-            compileUnit.Namespaces.Add(codedomsamplenamespace);
-
-
-            // Create a NameSpace - "namespace CodeDomSampleNS"
-            //
-
-
-
-            // Create using statement - "using System;"
-            //
-
-
-            // Add the using statement to the namespace -
-            // namespace CodeDomSampleNS {
-            //      using System;
-            //
-            codedomsamplenamespace.Imports.Add(firstimport);
-
-            // Create a type inside the namespace - public class CodeDomSample
-            //
-
-
-            var members = new CodeMemberField();
-            members.Attributes = MemberAttributes.Private;
-            members.Name = "p";
-            members.Type = new CodeTypeReference(typeof(Process));
-            newType.Members.Add(members);
-
-            var constructor = new CodeConstructor { Attributes = MemberAttributes.Public };
-
-            var constructorexpOne = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.WorkingDirectory"), new CodePrimitiveExpression(@"C:\Users\Liran\Desktop\WebTest"));
-            var constructorexpTwo = new CodeTypeReferenceExpression("p.StartInfo.WindowStyle  = ProcessWindowStyle.Hidden");
-            var constructorexpThree = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.FileName"), new CodePrimitiveExpression("cmd.exe"));
-            var constructorexpFour = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c node app.js"));
-
-            constructor.Statements.Add(constructorexpOne);
-            constructor.Statements.Add(constructorexpTwo);
-            constructor.Statements.Add(constructorexpThree);
-            constructor.Statements.Add(constructorexpFour);
-
-            newType.Members.Add(constructor);
-            // Declaring a ToString method
-            CodeMemberMethod methodStart = new CodeMemberMethod()
-            {
-                Name = "StartServer",
-                Attributes = MemberAttributes.Public | MemberAttributes.Final
-            };
-            var startCode = new CodeTypeReferenceExpression("p.Start()");
-            methodStart.Statements.Add(startCode);
-
-
-            CodeMemberMethod methodDispose = new CodeMemberMethod()
-            {
-                Name = "ShutDown",
-                Attributes = MemberAttributes.Public | MemberAttributes.Final
-            };
-            var disposeCodeOne = new CodeTypeReferenceExpression("p.Kill()");
-            var disposeCodeTwo = new CodeTypeReferenceExpression("p.Dispose()");
-            methodDispose.Statements.Add(disposeCodeOne);
-            methodDispose.Statements.Add(disposeCodeTwo);
-
-            CodeMemberMethod methodOpenBrowser = new CodeMemberMethod()
-            {
-                Name = "OpenBrowserd",
-                Attributes = MemberAttributes.Public | MemberAttributes.Final
-            };
-            var openBrowerCode = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Process"), "Start", new CodePrimitiveExpression("http://:3000"));
-            methodOpenBrowser.Statements.Add(openBrowerCode);
-
-
-
-            newType.Members.Add(methodStart);
-            newType.Members.Add(methodDispose);
-            newType.Members.Add(methodOpenBrowser);
-
-
-            // Add the type to the namespace
-            //
-            codedomsamplenamespace.Types.Add(newType);
-
-            // Add the NameSpace to the CodeCompileUnit
-            //
-            compileUnit.Namespaces.Add(codedomsamplenamespace);
 
             // Return the CompileUnit
             //
@@ -166,7 +61,101 @@ namespace CodeGenerator
             using (var provider = new CSharpCodeProvider())
                 return provider.CompileAssemblyFromSource(parameters, sources);
         }
+        private CodeCompileUnit NodJSServerCode(CodeCompileUnit compileUnit, string className, string classNameSpace)
+        {
 
+            #region NameSpace Creation
+            var codedomsamplenamespace = new CodeNamespace(classNameSpace);
+            #endregion NameSpace Creation
+
+            #region Import Creation
+            var firstimport = new CodeNamespaceImport("System");
+            var secondImport = new CodeNamespaceImport("System.Diagnostics");
+            var thirdImport = new CodeNamespaceImport("System.Net");
+            var fourImport = new CodeNamespaceImport("System.Net.Sockets");
+
+            codedomsamplenamespace.Imports.Add(firstimport);
+            codedomsamplenamespace.Imports.Add(secondImport);
+            codedomsamplenamespace.Imports.Add(thirdImport);
+            codedomsamplenamespace.Imports.Add(fourImport);
+            #endregion Import Creation
+
+            #region Class Creation
+            var newType = new CodeTypeDeclaration(className) { Attributes = MemberAttributes.Public };
+            #endregion Class Creation
+
+            #region Member Creation
+            var members = new CodeMemberField();
+            members.Attributes = MemberAttributes.Private;
+            members.Name = "p";
+            members.Type = new CodeTypeReference(typeof(Process));
+            newType.Members.Add(members);
+            #endregion Member Creation
+
+            #region Constructor Creation
+            var constructor = new CodeConstructor { Attributes = MemberAttributes.Public };
+            var statement = new CodeTypeReferenceExpression("p = new Process()");
+            var statementOne = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.WorkingDirectory"), new CodePrimitiveExpression(@"C:\Users\Liran\Desktop\WebTest"));
+            var statementTwo = new CodeTypeReferenceExpression("p.StartInfo.WindowStyle  = ProcessWindowStyle.Hidden");
+            var statementThree = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.FileName"), new CodePrimitiveExpression("cmd.exe"));
+            var statementFour = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c node app.js"));
+
+
+            constructor.Statements.Add(statement);
+            constructor.Statements.Add(statementTwo);
+            constructor.Statements.Add(statementThree);
+            constructor.Statements.Add(statementFour);
+
+            newType.Members.Add(constructor);
+            #endregion Constructor Creation
+
+            #region Method Creation
+            // Declaring a ToString method
+            CodeMemberMethod methodStart = new CodeMemberMethod()
+            {
+                Name = "StartServer",
+                Attributes = MemberAttributes.Public | MemberAttributes.Final
+            };
+            var startCode = new CodeTypeReferenceExpression("p.Start()");
+            methodStart.Statements.Add(startCode);
+
+
+            CodeMemberMethod methodDispose = new CodeMemberMethod()
+            {
+                Name = "ShutDown",
+                Attributes = MemberAttributes.Public | MemberAttributes.Final
+            };
+            var disposeCodeOne = new CodeTypeReferenceExpression("p.Kill()");
+            var disposeCodeTwo = new CodeTypeReferenceExpression("p.Dispose()");
+            methodDispose.Statements.Add(disposeCodeOne);
+            methodDispose.Statements.Add(disposeCodeTwo);
+
+            CodeMemberMethod methodOpenBrowser = new CodeMemberMethod()
+            {
+                Name = "OpenBrowser",
+                Attributes = MemberAttributes.Public | MemberAttributes.Final
+            };
+            var openBrowerCode = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Process"), "Start", new CodePrimitiveExpression("http://" + ipAddress + ":3000"));
+            methodOpenBrowser.Statements.Add(openBrowerCode);
+
+            newType.Members.Add(methodStart);
+            newType.Members.Add(methodDispose);
+            newType.Members.Add(methodOpenBrowser);
+            #endregion Method Creation
+
+            // Add the type to the namespace
+            //
+            codedomsamplenamespace.Types.Add(newType);
+
+            // Add the NameSpace to the CodeCompileUnit
+            //
+            compileUnit.Namespaces.Add(codedomsamplenamespace);
+            return compileUnit;
+        }
+        public void SetIPAddress(string ip)
+        {
+            this.ipAddress = ip;
+        }
 
         public void AddClassToSolution(string className, string mainPath, string projectName = null)
         {
@@ -191,7 +180,7 @@ namespace CodeGenerator
             p.AddItem("Compile", newPath + "\\" + className + ".cs");
             p.Save();
         }
-        public void SwitchClass(string className, string mainPath)
+        public void SwitchClass(string className, string mainPath, string projectName = null)
         {
             List<string> listPath = mainPath.Split('\\').ToList();
 
@@ -200,7 +189,13 @@ namespace CodeGenerator
             List<string> ListNameOfProject = mainPath.Split('\\').ToList();
 
             string nameProject = ListNameOfProject[ListNameOfProject.Count - 4];
-
+            if (!string.IsNullOrEmpty(projectName))
+            {
+                newPath = newString.Remove(newString.Length - (10 + nameProject.Length), (10 + nameProject.Length));
+                newPath += projectName;
+            }
+            else
+                newPath = newString.Remove(newString.Length - 9, 9);
 
             if (File.Exists(newPath + "\\" + className + ".cs"))
             {

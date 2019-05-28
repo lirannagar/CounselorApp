@@ -1,158 +1,22 @@
-﻿2019-05-23 12:06:53.774 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:06:54.838 [INFO]    OpenConnection()
-2019-05-23 12:06:54.879 [INFO]    SwitchAdminUser()
-2019-05-23 12:06:55.104 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:06:55.220 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:06:55.228 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:06:55.234 [INFO]    GetSource(Sql)
-2019-05-23 12:06:55.242 [INFO]    EditAdvice(Sql)
-2019-05-23 12:07:05.050 [ERROR]   Error while trying to Click update  button System.Exception: Exception  while trying to  Update Advice to the DB ---> Oracle.ManagedDataAccess.Client.OracleException: ORA-00911: invalid character
-   at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
-   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteNonQuery(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, Boolean isFromEF)
-   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery()
-   at CounselorApp.Administrator.EditAdvice.UpdateAdvice(String name, String body, String pathProtected, String pathVulnerable, String source) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 358
-   --- End of inner exception stack trace ---
-   at CounselorApp.Administrator.EditAdvice.UpdateAdvice(String name, String body, String pathProtected, String pathVulnerable, String source) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 363
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 123
-2019-05-23 12:07:25.631 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:07:26.605 [INFO]    OpenConnection()
-2019-05-23 12:07:26.657 [INFO]    SwitchAdminUser()
-2019-05-23 12:07:27.192 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:07:27.327 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:07:27.340 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:07:27.354 [INFO]    GetSource(Sql)
-2019-05-23 12:07:27.370 [INFO]    EditAdvice(Sql)
-2019-05-23 12:08:45.201 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:08:46.249 [INFO]    OpenConnection()
-2019-05-23 12:08:46.459 [INFO]    SwitchAdminUser()
-2019-05-23 12:08:46.777 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:08:46.845 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:08:46.852 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:08:46.858 [INFO]    GetSource(Sql)
-2019-05-23 12:08:46.864 [INFO]    EditAdvice(Sql)
-2019-05-23 12:10:23.272 [ERROR]   Error while trying to Click update  button System.Exception: One of the fileds are empty!
-   at CounselorApp.Administrator.EditAdvice.CheckTextBoxField()
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e)
-2019-05-23 12:10:45.428 [ERROR]   Error while trying to Click update  button System.Exception: One of the fileds are empty!
-   at CounselorApp.Administrator.EditAdvice.CheckTextBoxField()
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e)
-2019-05-23 12:32:48.902 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:32:49.711 [INFO]    OpenConnection()
-2019-05-23 12:32:49.745 [INFO]    SwitchAdminUser()
-2019-05-23 12:32:50.146 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:32:50.245 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:32:50.253 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:32:50.260 [INFO]    GetSource(Sql)
-2019-05-23 12:32:50.266 [INFO]    EditAdvice(Sql)
-2019-05-23 12:42:34.113 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:42:34.612 [INFO]    OpenConnection()
-2019-05-23 12:42:34.649 [INFO]    SwitchAdminUser()
-2019-05-23 12:42:34.828 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:42:34.896 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:42:34.903 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:42:34.908 [INFO]    GetSource(Sql)
-2019-05-23 12:42:34.915 [INFO]    EditAdvice(Sql)
-2019-05-23 12:42:48.733 [INFO]    ClickUploadProtectedWebButton()
-2019-05-23 12:43:54.277 [ERROR]   Error while trying to Click update  button System.Exception: One of the fileds are empty!
-   at CounselorApp.Administrator.EditAdvice.CheckTextBoxField() in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 139
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 113
-2019-05-23 12:44:21.859 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:44:22.592 [INFO]    OpenConnection()
-2019-05-23 12:44:22.640 [INFO]    SwitchAdminUser()
-2019-05-23 12:44:22.856 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:44:22.940 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:44:22.947 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:44:22.956 [INFO]    GetSource(Sql)
-2019-05-23 12:44:22.962 [INFO]    EditAdvice(Sql)
-2019-05-23 12:44:29.536 [INFO]    ClickUploadProtectedWebButton()
-2019-05-23 12:45:22.767 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:45:23.176 [INFO]    OpenConnection()
-2019-05-23 12:45:23.205 [INFO]    SwitchAdminUser()
-2019-05-23 12:45:23.323 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:45:23.383 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:45:23.390 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:45:23.395 [INFO]    GetSource(Sql)
-2019-05-23 12:45:23.401 [INFO]    EditAdvice(Sql)
-2019-05-23 12:45:36.620 [INFO]    ClickUploadProtectedWebButton()
-2019-05-23 12:45:37.719 [ERROR]   Error while trying to Click update  button System.Exception: One of the fileds are empty!
-   at CounselorApp.Administrator.EditAdvice.CheckTextBoxField() in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 139
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 113
-2019-05-23 12:45:39.354 [ERROR]   Error while trying to Click update  button System.Exception: One of the fileds are empty!
-   at CounselorApp.Administrator.EditAdvice.CheckTextBoxField() in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 139
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 113
-2019-05-23 12:45:50.083 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:45:50.803 [INFO]    OpenConnection()
-2019-05-23 12:45:50.849 [INFO]    SwitchAdminUser()
-2019-05-23 12:45:51.000 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:45:51.083 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:45:51.094 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:45:51.106 [INFO]    GetSource(Sql)
-2019-05-23 12:45:51.113 [INFO]    EditAdvice(Sql)
-2019-05-23 12:49:59.174 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:49:59.940 [INFO]    OpenConnection()
-2019-05-23 12:49:59.976 [INFO]    SwitchAdminUser()
-2019-05-23 12:50:11.444 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:50:17.444 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:50:18.032 [INFO]    OpenConnection()
-2019-05-23 12:50:18.078 [INFO]    SwitchAdminUser()
-2019-05-23 12:50:43.475 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:50:44.142 [INFO]    OpenConnection()
-2019-05-23 12:50:44.184 [INFO]    SwitchAdminUser()
-2019-05-23 12:50:44.351 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:50:44.443 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:50:44.451 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:50:44.461 [INFO]    GetSource(Sql)
-2019-05-23 12:50:44.467 [INFO]    EditAdvice(Sql)
-2019-05-23 12:51:25.202 [ERROR]   Error while trying to Click update  button System.Exception: Exception  while trying to  Update Advice to the DB ---> Oracle.ManagedDataAccess.Client.OracleException: ORA-00911: invalid character
-   at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
-   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteNonQuery(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, Boolean isFromEF)
-   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery()
-   at CounselorApp.Administrator.EditAdvice.UpdateAdvice(String name, String body, String pathProtected, String pathVulnerable, String source) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 357
-   --- End of inner exception stack trace ---
-   at CounselorApp.Administrator.EditAdvice.UpdateAdvice(String name, String body, String pathProtected, String pathVulnerable, String source) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 362
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 121
-2019-05-23 12:53:10.676 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:53:11.349 [INFO]    OpenConnection()
-2019-05-23 12:53:11.387 [INFO]    SwitchAdminUser()
-2019-05-23 12:53:11.551 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:53:11.635 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:53:11.644 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:53:11.650 [INFO]    GetSource(Sql)
-2019-05-23 12:53:11.658 [INFO]    EditAdvice(Sql)
-2019-05-23 12:53:16.975 [ERROR]   Error while trying to Click update  button System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Liran\Desktop\nginx'.
-   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
-   at System.IO.Directory.InternalMove(String sourceDirName, String destDirName, Boolean checkHost)
-   at System.IO.Directory.Move(String sourceDirName, String destDirName)
-   at CounselorApp.Administrator.EditAdvice.TransferDirectory(String pathText) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 148
-   at CounselorApp.Administrator.EditAdvice.UpdateButtonClick(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\EditAdvice.xaml.cs:line 113
-2019-05-23 12:53:56.412 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:53:57.054 [INFO]    OpenConnection()
-2019-05-23 12:53:57.086 [INFO]    SwitchAdminUser()
-2019-05-23 12:53:57.271 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:53:57.361 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:53:57.371 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:53:57.380 [INFO]    GetSource(Sql)
-2019-05-23 12:53:57.387 [INFO]    EditAdvice(Sql)
-2019-05-23 12:58:40.008 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 12:58:40.820 [INFO]    OpenConnection()
-2019-05-23 12:58:40.859 [INFO]    SwitchAdminUser()
-2019-05-23 12:58:41.038 [INFO]    GetAdviceBody(Sql)
-2019-05-23 12:58:41.151 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 12:58:41.173 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 12:58:41.190 [INFO]    GetSource(Sql)
-2019-05-23 12:58:41.208 [INFO]    EditAdvice(Sql)
-2019-05-23 13:00:08.542 [INFO]    UpdateAdvice(Sql)
-2019-05-23 13:01:17.636 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 13:01:18.339 [INFO]    OpenConnection()
-2019-05-23 13:01:18.387 [INFO]    SwitchAdminUser()
-2019-05-23 13:01:18.615 [INFO]    GetAdviceBody(Sql)
-2019-05-23 13:01:18.709 [INFO]    GetPathWebNotProtected(Sql)
-2019-05-23 13:01:18.719 [INFO]    GetPathWebProtected(Sql)
-2019-05-23 13:01:18.727 [INFO]    GetSource(Sql)
-2019-05-23 13:01:18.736 [INFO]    EditAdvice(Sql)
-2019-05-23 15:28:56.514 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 15:28:57.844 [INFO]    OpenConnection()
-2019-05-23 15:28:57.898 [INFO]    SwitchAdminUser()
-2019-05-23 15:33:55.265 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
-2019-05-23 15:33:56.065 [INFO]    OpenConnection()
-2019-05-23 15:33:56.109 [INFO]    SwitchAdminUser()
+﻿2019-05-29 02:43:47.668 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-05-29 02:43:48.140 [INFO]    OpenConnection()
+2019-05-29 02:43:48.168 [INFO]    SwitchAdminUser()
+2019-05-29 02:43:48.231 [INFO]    AdviceMainWindow()
+2019-05-29 02:43:52.351 [ERROR]   Error while trying to click edit advice button System.Exception: Please choose an opetion
+   at CounselorApp.Administrator.MenageAdvice.ClickEditAdviceButton(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\MenageAdvice.xaml.cs:line 57
+2019-05-29 02:44:04.583 [INFO]    GetAdviceBody(DoS)
+2019-05-29 02:44:04.609 [INFO]    GetPathWebNotProtected(DoS)
+2019-05-29 02:44:04.617 [INFO]    GetPathWebProtected(DoS)
+2019-05-29 02:44:04.623 [INFO]    GetSource(DoS)
+2019-05-29 02:44:04.630 [INFO]    EditAdvice(DoS)
+2019-05-29 02:44:04.691 [INFO]    ClickEditAdviceButton( DoS )
+2019-05-29 02:44:15.824 [INFO]    AdviceMainWindow()
+2019-05-29 02:44:15.846 [INFO]    ClickOnBack()
+2019-05-29 02:44:17.997 [ERROR]   Error while trying to click edit advice button System.Exception: Please choose an opetion
+   at CounselorApp.Administrator.MenageAdvice.ClickEditAdviceButton(Object sender, RoutedEventArgs e) in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\Administrator\MenageAdvice.xaml.cs:line 57
+2019-05-29 02:44:21.252 [INFO]    GetAdviceBody(DoS)
+2019-05-29 02:44:21.262 [INFO]    GetPathWebNotProtected(DoS)
+2019-05-29 02:44:21.271 [INFO]    GetPathWebProtected(DoS)
+2019-05-29 02:44:21.279 [INFO]    GetSource(DoS)
+2019-05-29 02:44:21.286 [INFO]    EditAdvice(DoS)
+2019-05-29 02:44:21.323 [INFO]    ClickEditAdviceButton( DoS )

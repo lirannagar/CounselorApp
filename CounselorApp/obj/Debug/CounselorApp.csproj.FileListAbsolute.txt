@@ -37,22 +37,10 @@ C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.P
 C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.csproj.GenerateResource.Cache
 C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.exe
 C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.pdb
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.csprojResolveAssemblyReference.cache
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AddNewAdvice.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AdminMainWindow.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\EditAdvice.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\MenageAdvice.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\AdviceMainWindow.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\SecurityAdviceWidnow .g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\MainWindow.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\App.g.cs
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp_MarkupCompile.cache
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp_MarkupCompile.lref
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CounselorApp.exe.config
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CounselorApp.exe
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CounselorApp.pdb
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CodeGenerator.dll
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\ConnectionOracle.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\EntityFramework.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Logger.dll
@@ -65,8 +53,6 @@ C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.AvalonDock.
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.Toolkit.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CodeGenerator.pdb
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\ConnectionOracle.pdb
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\ConnectionOracle.dll.config
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Logger.pdb
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Logger.dll.config
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\EntityFramework.xml
@@ -81,12 +67,23 @@ C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\ro\Xceed.Wpf.AvalonDo
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.csprojResolveAssemblyReference.cache
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AddNewAdvice.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AdminMainWindow.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\EditAdvice.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\MenageAdvice.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\AdviceMainWindow.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\SecurityAdviceWidnow.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\MainWindow.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\App.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp_MarkupCompile.cache
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp_MarkupCompile.lref
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AddNewAdvice.baml
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AdminMainWindow.baml
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\EditAdvice.baml
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\MenageAdvice.baml
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\AdviceMainWindow.baml
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\SecurityAdviceWidnow .baml
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Advises\SecurityAdviceWidnow.baml
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\MainWindow.baml
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.g.resources
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.Properties.Resources.resources

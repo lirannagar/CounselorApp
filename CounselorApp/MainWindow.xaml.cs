@@ -1,11 +1,9 @@
-﻿using ConnectionOracle;
-using CounselorApp.Administrator;
+﻿using CounselorApp.Administrator;
 using CounselorApp.Advises;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Diagnostics;
 using System.Windows;
-#pragma warning disable CS0162 
+#pragma warning disable CS0162
 
 
 namespace CounselorApp
@@ -25,20 +23,26 @@ namespace CounselorApp
         private OracleCommand cmd;
         #endregion Members
 
+        static bool firstTimeEnter = true;
+
         #region Constructor
         public MainWindow()
         {
-            Logger.Instance.Info("--------------------------------------------PROGRAM STARTED--------------------------------------------");
-            OpenConnection();
-            SwitchAdminUser();
             InitializeComponent();
+            if (firstTimeEnter)
+            {
+                Logger.Instance.Info("--------------------------------------------PROGRAM STARTED--------------------------------------------");
+                OpenConnection();
+                SwitchAdminUser();
+                firstTimeEnter = false;
+            }
+                       
 
-            var admin = new SecurityAdviceWidnow("Sql");
+            var admin = new MenageAdvice();
             admin.Show();
             this.Close();
         }
         #endregion Constructor
-
 
         #region Private Methods
         /// <summary>

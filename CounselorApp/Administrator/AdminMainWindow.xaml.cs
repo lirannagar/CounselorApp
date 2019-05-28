@@ -52,7 +52,17 @@ namespace CounselorApp.Administrator
         }
         private void ClickAdvisesButton(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                var advice = new MenageAdvice();
+                advice.Show();
+                this.Close();
+                Logger.Instance.Info("ClickAdvisesButton()");
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Error("Error while trying to open MenageAdvice window", ex);
+            }
         }
         #endregion Private Methods
 

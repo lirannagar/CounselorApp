@@ -5,11 +5,14 @@ C:\Users\Liran\Desktop\CounselorApp-master\CodeGenerator\obj\Debug\CodeGenerator
 C:\Users\Liran\Desktop\CounselorApp-master\CodeGenerator\obj\Debug\CodeGenerator.pdb
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\CodeGenerator.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\CodeGenerator.pdb
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Logger.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Xceed.Wpf.AvalonDock.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Logger.pdb
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\Logger.dll.config
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
@@ -20,6 +23,6 @@ C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\ro\Xceed.Wpf.AvalonD
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.csprojResolveAssemblyReference.cache
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.dll
 C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.pdb
-C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\obj\Debug\CodeGenerator.csprojResolveAssemblyReference.cache

@@ -1,0 +1,10 @@
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\InitializationApp.exe.config
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\InitializationApp.exe
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\InitializationApp.pdb
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\obj\Debug\InitializationApp.csprojResolveAssemblyReference.cache
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\obj\Debug\InitializationApp.exe
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\obj\Debug\InitializationApp.pdb
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\Logger.dll
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\Logger.pdb
+C:\Users\Liran\Desktop\CounselorApp\InitializationApp\bin\Debug\Logger.dll.config
