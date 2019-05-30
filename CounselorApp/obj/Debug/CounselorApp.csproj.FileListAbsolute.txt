@@ -90,3 +90,5 @@ C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.Properti
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.csproj.GenerateResource.Cache
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.exe
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\CounselorApp.pdb
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AddNewSecurityAdviser.g.cs
+C:\Users\Liran\Desktop\CounselorApp\CounselorApp\obj\Debug\Administrator\AddNewSecurityAdviser.baml

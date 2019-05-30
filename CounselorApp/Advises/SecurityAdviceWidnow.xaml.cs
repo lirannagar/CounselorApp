@@ -8,32 +8,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CounselorApp.Advises
-{
+namespace CounselorApp.Advises {
     using Oracle.ManagedDataAccess.Client;
     using System;
     using System.Diagnostics;
     using System.Windows;
     using System.Windows.Documents;
-
-
-    public partial class SecurityAdviceWidnow : Window
-    {
-
+    using CodeGenerator;
+    
+    
+    public partial class SecurityAdviceWidnow : Window {
+        
         private OracleCommand cmd;
-
+        
         private TextRange textRangebody;
-
+        
         private string sourceWeb;
-
+        
         private string advicePathWebNotProected;
-
+        
         private string advicePathWebProected;
-
-        public SecurityAdviceWidnow(string adviceName)
-        {
-            try
-            {
+        
+        public SecurityAdviceWidnow(string adviceName) {
+            try {
                 InitializeComponent();
                 cmd = new OracleCommand();
                 textRangebody = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd);
@@ -42,121 +39,98 @@ namespace CounselorApp.Advises
                 this.advicePathWebProected = GetPathWebProtected(adviceName);
                 this.sourceWeb = GetSource(adviceName);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Logger.Instance.Error("Error while trying to open  Security Advice Widnow ", ex);
             }
         }
-
-        private void ClickOnOpenSource(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+        
+        private void ClickOnOpenSource(object sender, RoutedEventArgs e) {
+            try {
                 Process.Start(this.sourceWeb);
                 Logger.Instance.Info("ClickOnOpenSource(" + this.sourceWeb + ")");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Logger.Instance.Error("Error while trying to open source advice ", ex);
             }
         }
-
-        private void ClickVulnerableWeb(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+        
+        private void ClickVulnerableWeb(object sender, RoutedEventArgs e) {
+            try {
+                var serv = new Web_Server_Agaist_Week();
+                serv.StartServer();
+                serv.OpenBrowser();
                 Logger.Instance.Info("ClickVulnerableWeb()");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Logger.Instance.Error("Error while trying to open Vulnerable Web ", ex);
             }
         }
-
-        private void ClickProtectedWeb(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+        
+        private void ClickProtectedWeb(object sender, RoutedEventArgs e) {
+            try {
                 Logger.Instance.Info("ClickProtectedWeb()");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Logger.Instance.Error("Error while trying to open Protected  Web ", ex);
             }
         }
-
-        private string GetSource(string nameAdvice)
-        {
-            try
-            {
+        
+        private string GetSource(string nameAdvice) {
+            try {
                 cmd.Connection = OracleSingletonConnection.Instance;
                 string advice = "select advises.SOURCE_ADVICE from advises where advises.advice_name = '" + nameAdvice + "'";
                 cmd.CommandText = advice;
                 return Convert.ToString(cmd.ExecuteScalar());
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw new System.Exception("Exception while trying to get source  ", ex);
             }
         }
-
-        private string GetAdviceBody(string nameAdvice)
-        {
-            try
-            {
+        
+        private string GetAdviceBody(string nameAdvice) {
+            try {
                 cmd.Connection = OracleSingletonConnection.Instance;
                 string advice = "select advises.advice_text from advises where advises.advice_name = '" + nameAdvice + "'";
                 cmd.CommandText = advice;
                 return Convert.ToString(cmd.ExecuteScalar());
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw new System.Exception("Error while trying to get advice body ", ex);
             }
         }
-
-        private string GetPathWebNotProtected(string nameAdvice)
-        {
-            try
-            {
+        
+        private string GetPathWebNotProtected(string nameAdvice) {
+            try {
                 cmd.Connection = OracleSingletonConnection.Instance;
                 string advice = "select advises.PATH_NOT_PROTECTED_WEB from advises where advises.advice_name = '" + nameAdvice + "'";
                 cmd.CommandText = advice;
                 return Convert.ToString(cmd.ExecuteScalar());
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw new System.Exception("Exception while trying to Get Path Web Not Protected ", ex);
             }
         }
-
-        private string GetPathWebProtected(string nameAdvice)
-        {
-            try
-            {
+        
+        private string GetPathWebProtected(string nameAdvice) {
+            try {
                 cmd.Connection = OracleSingletonConnection.Instance;
                 string advice = "select advises.PATH_PROTECTED_WEB from advises where advises.advice_name = '" + nameAdvice + "'";
                 cmd.CommandText = advice;
                 return Convert.ToString(cmd.ExecuteScalar());
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw new System.Exception("Exception while trying to Get Path Web Protected ", ex);
             }
         }
-
-        private void ClickOnBackButton(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+        
+        private void ClickOnBackButton(object sender, RoutedEventArgs e) {
+            try {
                 var adviceMain = new AdviceMainWindow();
                 adviceMain.Show();
                 this.Close();
-                Logger.Instance.Info("ClickOnBackButton");
+                Logger.Instance.Info("ClickOnBackButton()");
             }
-            catch (Exception ex)
-            {
-
+            catch (Exception ex) {
                 Logger.Instance.Error("Error while trying to click back button", ex);
             }
         }

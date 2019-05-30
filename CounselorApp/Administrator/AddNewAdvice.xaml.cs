@@ -9,6 +9,8 @@ namespace CounselorApp.Administrator
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Net;
+    using System.Net.Sockets;
     using System.Windows;
     using System.Windows.Documents;
     using System.Windows.Forms;
@@ -78,14 +80,16 @@ namespace CounselorApp.Administrator
                 string className = TEMPLATE_NEW_CLASS + NameTextBox.Text;
                 string nameSpace = NAME_SPACE_NAME;
                 string project = PROJECT_NAME;
-                
+                TransferDirectory(ProtectedWebTextBox.Text);
+                TransferDirectory(VulnerableWebTextBox.Text);
+                string pathToCreateServer = GetPathOfServerInSourceDirectory(VulnerableWebTextBox.Text);
+                string nameFile = GetNameOfFileToStartTheServer(pathToCreateServer);
                 var cds = new ClassGenerator();
-                CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace);
+                cds.SetIPAddress(GetLocalIPAddress());
+                CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace, pathToCreateServer, nameFile);
                 cds.GenerateCode(newClassCode, className);
                 cds.AddClassToSolution(className, Directory.GetCurrentDirectory(), project);
 
-                TransferDirectory(ProtectedWebTextBox.Text);
-                TransferDirectory(VulnerableWebTextBox.Text);
                 UploadVulnerableWebButton.IsEnabled = false;
                 VulnerableWebTextBox.IsEnabled = false;
                 UploadProtectedWebButton.IsEnabled = false;
@@ -96,7 +100,7 @@ namespace CounselorApp.Administrator
                 cmd.Connection = OracleSingletonConnection.Instance;
                 cmd.CommandText = "SELECT advice_seq.nextval from dual";
                 string id = Convert.ToInt32(cmd.ExecuteScalar()).ToString();
-                InsertDataToDB(id, NameTextBox.Text, bodyAdviceText, ProtectedWebTextBox.Text, VulnerableWebTextBox.Text, SourceAdviceTextBox.Text);
+                InsertDataToDB(id, NameTextBox.Text, bodyAdviceText, GetPathOfServerInSourceDirectory(ProtectedWebTextBox.Text), GetPathOfServerInSourceDirectory(VulnerableWebTextBox.Text), SourceAdviceTextBox.Text);
                 Logger.Instance.Info("UploadButton()");
             }
             catch (Exception ex)
@@ -104,6 +108,19 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to Click Upload Protected Web Button  ", ex);
             }
         }
+
+        /// <summary>
+        /// Shuold return the single file that responsible to start the server
+        /// </summary>
+        /// <param name="pathToCreateServer">Path of the diretory of the server</param>
+        /// <returns></returns>
+        private string GetNameOfFileToStartTheServer(string pathToCreateServer)
+        { 
+            string pathOfTheFile = Directory.GetFiles(pathToCreateServer).Where(m => m.Contains(".js") || m.Contains(".exe")).FirstOrDefault();
+            List<string> listPath = pathOfTheFile.Split('\\').ToList();
+            return listPath[listPath.Count - 1];
+        }
+
         /// <summary>
         /// Transfer Directory to the System Directory 
         /// </summary>
@@ -117,9 +134,9 @@ namespace CounselorApp.Administrator
             catch (Exception ex)
             {
 
-                throw new Exception("Error while trying to Transfer Directory ", ex) ;
+                throw new Exception("Error while trying to Transfer Directory ", ex);
             }
-            
+
         }
 
         /// <summary>
@@ -138,9 +155,9 @@ namespace CounselorApp.Administrator
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception while to trying to Get Path Of Server In Source Directory",ex);
+                throw new Exception("Exception while to trying to Get Path Of Server In Source Directory", ex);
             }
-      
+
         }
 
         private void InsertDataToDB(string id, string Name, string body, string pathProtected, string pathVulnerable, string source)
@@ -175,6 +192,22 @@ namespace CounselorApp.Administrator
             {
                 Logger.Instance.Error("Exception while trying to click on back button", ex);
             }
+        }
+        /// <summary>
+        /// Get the local IP address
+        /// </summary>
+        /// <returns></returns>
+        private string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
         #endregion Private Methods
 

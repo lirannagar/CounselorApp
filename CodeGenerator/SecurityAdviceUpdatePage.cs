@@ -14,7 +14,7 @@ namespace CodeGenerator
     public partial class SecurityAdviceUpdatePage
     {
  
-        public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace)
+        public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace, string classNameServerToUpdate)
         {
 
             var compileUnit = new CodeCompileUnit();
@@ -28,13 +28,15 @@ namespace CodeGenerator
             var import4 = new CodeNamespaceImport("System.Diagnostics");
             var import5 = new CodeNamespaceImport("System.Windows");
             var import6 = new CodeNamespaceImport("System.Windows.Documents");
+            var import7 = new CodeNamespaceImport("CodeGenerator");
 
-           
+
             codedomsamplenamespace.Imports.Add(import2);
             codedomsamplenamespace.Imports.Add(import3);
             codedomsamplenamespace.Imports.Add(import4);
             codedomsamplenamespace.Imports.Add(import5);
             codedomsamplenamespace.Imports.Add(import6);
+            codedomsamplenamespace.Imports.Add(import7);
             #endregion Imports Creation
 
             #region Class Creation
@@ -164,7 +166,15 @@ namespace CodeGenerator
             ClickVulnerableWeb.Parameters.Add(new CodeParameterDeclarationExpression("System.Object", "sender"));
             ClickVulnerableWeb.Parameters.Add(new CodeParameterDeclarationExpression("RoutedEventArgs", "e"));
             var tryClickVulnerableWeb = new CodeTryCatchFinallyStatement();
+            var statementServerStartOne = new CodeAssignStatement();
+            statementServerStartOne.Right = new CodeObjectCreateExpression(new CodeTypeReference(classNameServerToUpdate));
+            statementServerStartOne.Left = new CodeTypeReferenceExpression("var serv");
+            var statementServerStartTwo = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("serv"), "StartServer");
+            var statementServerStartThree = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("serv"), "OpenBrowser");
             var logInfoClickVulnerableWeb = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Logger"), "Instance.Info", new CodePrimitiveExpression("ClickVulnerableWeb()"));
+            tryClickVulnerableWeb.TryStatements.Add(statementServerStartOne);
+            tryClickVulnerableWeb.TryStatements.Add(statementServerStartTwo);
+            tryClickVulnerableWeb.TryStatements.Add(statementServerStartThree);
             tryClickVulnerableWeb.TryStatements.Add(logInfoClickVulnerableWeb);
             var catchClickVulnerableWeb = new CodeCatchClause("ex", new CodeTypeReference("Exception"));
             var logErrorClickVulnerableWeb = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Logger"), "Instance.Error", new CodePrimitiveExpression("Error while trying to open Vulnerable Web "), new CodeTypeReferenceExpression("ex"));
@@ -255,7 +265,9 @@ namespace CodeGenerator
             tryGetPathWebProtected.CatchClauses.Add(catchGetPathWebProtected);
             GetPathWebProtected.Statements.Add(tryGetPathWebProtected);
 
+
             
+
 
             #endregion Methods Creation
 
@@ -270,6 +282,7 @@ namespace CodeGenerator
             newType.Members.Add(GetAdviceBody);
             newType.Members.Add(GetPathWebNotProtected);
             newType.Members.Add(GetPathWebProtected);
+            newType.Members.Add(ClickOnBackButton);
             codedomsamplenamespace.Types.Add(newType);
             compileUnit.Namespaces.Add(codedomsamplenamespace);
             // Return the CompileUnit

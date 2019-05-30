@@ -11,12 +11,16 @@ namespace CodeGenerator
 {
     public class ClassGenerator
     {
+        const string NODE_JS_EXTENSION_FILE = "js";
+        const string EXE_EXTENSION_FILE = "exe";
+
         private string ipAddress;
 
-        public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace)
+        public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace,string path,string nameFile)
         {
             CodeCompileUnit compileUnit = new CodeCompileUnit();
-            compileUnit = NodJSServerCode(compileUnit, className, classNameSpace);
+            if(nameFile.Contains(NODE_JS_EXTENSION_FILE))
+            compileUnit = GenerateNodJSServerCode(compileUnit, className, classNameSpace,path, nameFile);
 
 
             // Return the CompileUnit
@@ -61,7 +65,7 @@ namespace CodeGenerator
             using (var provider = new CSharpCodeProvider())
                 return provider.CompileAssemblyFromSource(parameters, sources);
         }
-        private CodeCompileUnit NodJSServerCode(CodeCompileUnit compileUnit, string className, string classNameSpace)
+        private CodeCompileUnit GenerateNodJSServerCode(CodeCompileUnit compileUnit, string className, string classNameSpace,string pathFile, string fileName)
         {
 
             #region NameSpace Creation
@@ -95,13 +99,14 @@ namespace CodeGenerator
             #region Constructor Creation
             var constructor = new CodeConstructor { Attributes = MemberAttributes.Public };
             var statement = new CodeTypeReferenceExpression("p = new Process()");
-            var statementOne = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.WorkingDirectory"), new CodePrimitiveExpression(@"C:\Users\Liran\Desktop\WebTest"));
+            var statementOne = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.WorkingDirectory"), new CodePrimitiveExpression(pathFile));
             var statementTwo = new CodeTypeReferenceExpression("p.StartInfo.WindowStyle  = ProcessWindowStyle.Hidden");
             var statementThree = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.FileName"), new CodePrimitiveExpression("cmd.exe"));
-            var statementFour = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c node app.js"));
+            var statementFour = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c node " + fileName));
 
 
             constructor.Statements.Add(statement);
+            constructor.Statements.Add(statementOne);
             constructor.Statements.Add(statementTwo);
             constructor.Statements.Add(statementThree);
             constructor.Statements.Add(statementFour);

@@ -36,7 +36,7 @@ namespace CodeGenerator {
         }
         
         public void OpenBrowser() {
-            Process.Start("http://:3000");
+            Process.Start("http://192.168.56.1:3000");
         }
     }
 }

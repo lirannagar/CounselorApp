@@ -28,9 +28,16 @@ namespace CounselorApp.Administrator
             {
                 var advices = new List<string>();
                 cmd.Connection = OracleSingletonConnection.Instance;
-                string advice = "select advises.advice_name from advises";
+                string advice = "select advises.ID_ADVISE from advises";
                 cmd.CommandText = advice;
-                advices.Add(Convert.ToString(cmd.ExecuteScalar()));
+                int startId = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = "select count(ID_ADVISE) from advises";
+                int length = Convert.ToInt32(cmd.ExecuteScalar());
+                for (int i = startId; i < (startId+length); i++)
+                {
+                    cmd.CommandText = "select ADVICE_NAME from advises  where ID_ADVISE = "+i+"";
+                    advices.Add(Convert.ToString(cmd.ExecuteScalar()));
+                }               
                 return advices;
             }
         }

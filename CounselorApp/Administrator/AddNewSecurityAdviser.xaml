@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="AddNewSecurityAdviser" Height="300" Width="300">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="149" Margin="63,41,0,0" VerticalAlignment="Top" Width="185"/>
     </Grid>
 </Window>

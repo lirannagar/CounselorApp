@@ -21,7 +21,7 @@ namespace CounselorApp.Advises
         const string CLASS_NAME =  "SecurityAdviceWidnow";
         const string PROJECT_NAME = "CounselorApp";
         const string DIRECTORY_NAME = "Advises";
-
+        const string TEMPLATE_NEW_CLASS = "Web_Server_Agaist_";
         #endregion Control Mapping
 
         #region Members
@@ -35,9 +35,16 @@ namespace CounselorApp.Advises
             {
                 var advices = new List<string>();
                 cmd.Connection = OracleSingletonConnection.Instance;
-                string advice = "select advises.advice_name from advises";
+                string advice = "select advises.ID_ADVISE from advises";
                 cmd.CommandText = advice;
-                advices.Add(Convert.ToString(cmd.ExecuteScalar()));
+                int startId = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = "select count(ID_ADVISE) from advises";
+                int length = Convert.ToInt32(cmd.ExecuteScalar());
+                for (int i = startId; i < (startId + length); i++)
+                {
+                    cmd.CommandText = "select ADVICE_NAME from advises  where ID_ADVISE = " + i + "";
+                    advices.Add(Convert.ToString(cmd.ExecuteScalar()));
+                }
                 return advices;
             }
         }
@@ -62,29 +69,37 @@ namespace CounselorApp.Advises
 
             if (!ComboBoxAdvices.SelectedValue.ToString().Contains(CHOOSE_ADVICE_STRING))
             {
+                string nameClassToUpdate = TEMPLATE_NEW_CLASS + ComboBoxAdvices.SelectedValue.ToString();
+                GenerateAdviceCode(nameClassToUpdate);
                 var adviceWindow = new SecurityAdviceWidnow(ComboBoxAdvices.SelectedValue.ToString())
                 {
                     Title = "Security Advice agaist " + ComboBoxAdvices.SelectedValue
-                };
-                GenerateAdviceCode(ComboBoxAdvices.SelectedValue.ToString());
+                };               
                 adviceWindow.Show();
                 this.Close();
             }
         }
-
-        private void GenerateAdviceCode(string adviceName)
+        /// <summary>
+        /// Update The Advice page with his servers
+        /// </summary>
+        /// <param name="adviceClassName">Class name to update</param>
+        private void GenerateAdviceCode(string adviceClassName)
         {
             string className = CLASS_NAME;
             string classnamespace = NAME_SPACE_NAME;
             string dir = DIRECTORY_NAME;
             string project = PROJECT_NAME;
             var cds = new SecurityAdviceUpdatePage();
-            CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, classnamespace);
+            CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, classnamespace, adviceClassName);
             cds.GenerateCode(newClassCode, className);
             cds.SwitchClass(className, Directory.GetCurrentDirectory(), project, dir);
         }
 
-
+        /// <summary>
+        /// Back to the login window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClickOnBackButton(object sender, RoutedEventArgs e)
         {
             try

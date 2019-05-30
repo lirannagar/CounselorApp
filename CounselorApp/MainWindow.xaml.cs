@@ -38,7 +38,7 @@ namespace CounselorApp
             }
                        
 
-            var admin = new MenageAdvice();
+            var admin = new AdviceMainWindow();
             admin.Show();
             this.Close();
         }
