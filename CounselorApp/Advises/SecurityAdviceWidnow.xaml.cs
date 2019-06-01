@@ -56,9 +56,7 @@ namespace CounselorApp.Advises {
         
         private void ClickVulnerableWeb(object sender, RoutedEventArgs e) {
             try {
-                var serv = new Web_Server_Agaist_Week();
-                serv.StartServer();
-                serv.OpenBrowser();
+        
                 Logger.Instance.Info("ClickVulnerableWeb()");
             }
             catch (Exception ex) {

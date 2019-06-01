@@ -1,1 +1,0 @@
-2019/05/25 22:42:25 [error] 45048#37928: *1 CreateFile() "C:\Users\Liran\Desktop\nginx/html/favicon.ico" failed (2: The system cannot find the file specified), client: 192.168.56.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.56.1", referrer: "http://192.168.56.1/"

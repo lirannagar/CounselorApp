@@ -56,8 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\Web_Server_Agaist_DoS.cs" />
-    <Compile Include="C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\Web_Server_Agaist_Week.cs" />
+    <Compile Include="C:\Users\Liran\Desktop\CounselorApp\CodeGenerator\Web_Server_Agaist_Dos.cs" />
     <Compile Include="ClassGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityAdviceUpdatePage.cs" />

@@ -15,12 +15,13 @@ namespace CodeGenerator {
     using System.Net.Sockets;
     
     
-    public class Web_Server_Agaist_DoS {
+    public class Web_Server_Agaist_Dos {
         
         private System.Diagnostics.Process p;
         
-        public Web_Server_Agaist_DoS() {
+        public Web_Server_Agaist_Dos() {
             p = new Process();
+            p.StartInfo.WorkingDirectory = "C:\\Users\\Liran\\Desktop\\CounselorApp\\CounselorApp\\bin\\Debug\\WebTest";
             p.StartInfo.WindowStyle  = ProcessWindowStyle.Hidden;
             p.StartInfo.FileName = "cmd.exe";
             p.StartInfo.Arguments = "/c node app.js";

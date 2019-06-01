@@ -86,6 +86,7 @@ namespace CounselorApp.Administrator
                 string nameFile = GetNameOfFileToStartTheServer(pathToCreateServer);
                 var cds = new ClassGenerator();
                 cds.SetIPAddress(GetLocalIPAddress());
+                className = className.Replace(" ", "_");
                 CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace, pathToCreateServer, nameFile);
                 cds.GenerateCode(newClassCode, className);
                 cds.AddClassToSolution(className, Directory.GetCurrentDirectory(), project);

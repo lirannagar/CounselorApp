@@ -16,11 +16,11 @@ namespace CodeGenerator
 
         private string ipAddress;
 
-        public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace,string path,string nameFile)
+        public CodeCompileUnit GenerateCSharpCode(string className, string classNameSpace, string path, string nameFile)
         {
             CodeCompileUnit compileUnit = new CodeCompileUnit();
-            if(nameFile.Contains(NODE_JS_EXTENSION_FILE))
-            compileUnit = GenerateNodJSServerCode(compileUnit, className, classNameSpace,path, nameFile);
+
+            compileUnit = GenerateServerCode(compileUnit, className, classNameSpace, path, nameFile);
 
 
             // Return the CompileUnit
@@ -65,7 +65,7 @@ namespace CodeGenerator
             using (var provider = new CSharpCodeProvider())
                 return provider.CompileAssemblyFromSource(parameters, sources);
         }
-        private CodeCompileUnit GenerateNodJSServerCode(CodeCompileUnit compileUnit, string className, string classNameSpace,string pathFile, string fileName)
+        private CodeCompileUnit GenerateServerCode(CodeCompileUnit compileUnit, string className, string classNameSpace, string pathFile, string fileName)
         {
 
             #region NameSpace Creation
@@ -102,7 +102,11 @@ namespace CodeGenerator
             var statementOne = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.WorkingDirectory"), new CodePrimitiveExpression(pathFile));
             var statementTwo = new CodeTypeReferenceExpression("p.StartInfo.WindowStyle  = ProcessWindowStyle.Hidden");
             var statementThree = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.FileName"), new CodePrimitiveExpression("cmd.exe"));
-            var statementFour = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c node " + fileName));
+            CodeAssignStatement statementFour = null;
+            if(fileName.Contains(NODE_JS_EXTENSION_FILE))
+                statementFour =  new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c node " + fileName));
+            else if (fileName.Contains(EXE_EXTENSION_FILE))
+                statementFour = new CodeAssignStatement(new CodeVariableReferenceExpression("p.StartInfo.Arguments"), new CodePrimitiveExpression("/c " + fileName));
 
 
             constructor.Statements.Add(statement);
@@ -140,7 +144,9 @@ namespace CodeGenerator
                 Name = "OpenBrowser",
                 Attributes = MemberAttributes.Public | MemberAttributes.Final
             };
-            var openBrowerCode = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Process"), "Start", new CodePrimitiveExpression("http://" + ipAddress + ":3000"));
+            string portNumber = null;
+            if (fileName.Contains(NODE_JS_EXTENSION_FILE)) { portNumber = "3000"; } else if (fileName.Contains(EXE_EXTENSION_FILE)) { portNumber = "3001"; }
+            var openBrowerCode = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Process"), "Start", new CodePrimitiveExpression("http://" + ipAddress +":"+ portNumber + ""));
             methodOpenBrowser.Statements.Add(openBrowerCode);
 
             newType.Members.Add(methodStart);

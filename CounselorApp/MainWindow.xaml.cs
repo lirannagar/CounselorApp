@@ -36,9 +36,7 @@ namespace CounselorApp
                 SwitchAdminUser();
                 firstTimeEnter = false;
             }
-                       
-
-            var admin = new AdviceMainWindow();
+            var admin = new AddNewAdvice();
             admin.Show();
             this.Close();
         }
