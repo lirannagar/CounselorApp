@@ -20,7 +20,7 @@ namespace CounselorApp.Administrator
         /// 
         /// </summary>
         #region Constructor
-        public AddNewSecurityAdviser()
+        public AddNewSecurityAdviser(string adminName)
         {
             InitializeComponent();
             Logger.Instance.Info("AddNewSecurityAdviser()");

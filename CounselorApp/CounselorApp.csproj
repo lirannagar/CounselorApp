@@ -192,10 +192,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeGenerator\CodeGenerator.csproj">
-      <Project>{e2679c2d-f338-40f1-b26a-a13b5cb3c9a7}</Project>
-      <Name>CodeGenerator</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{FD0D1CE0-BFAA-404D-81AF-91A9C4A79872}</Project>
       <Name>Logger</Name>

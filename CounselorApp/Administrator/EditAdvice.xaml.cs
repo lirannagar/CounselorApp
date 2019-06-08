@@ -25,16 +25,19 @@ namespace CounselorApp.Administrator
         private string oldPathWebNotProtected;
         private string oldePathWebProtected;
         private TextRange textRangebody;
+        private string nameAdmin;
         #endregion Members
 
 
         #region Constructor
-        public EditAdvice(string nameAdvice)
+        public EditAdvice(string nameAdvice, string nameAdmin)
         {
             try
             {
-                InitializeComponent();              
+                InitializeComponent();
                 this.nameAdvice = nameAdvice;
+                this.nameAdmin = nameAdmin;
+                logInLebal.Content = nameAdmin;
                 cmd = new OracleCommand();
                 NameTextBox.Text = nameAdvice;
                 textRangebody = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd);
@@ -60,7 +63,7 @@ namespace CounselorApp.Administrator
         {
             try
             {
-                var menegedWindow = new MenageAdvice();
+                var menegedWindow = new MenageAdvice(this.nameAdvice);
                 menegedWindow.Show();
                 this.Close();
                 Logger.Instance.Info("ClickOnBack()");
@@ -105,9 +108,9 @@ namespace CounselorApp.Administrator
         {
             try
             {
-                CheckTextBoxField();             
-                TransferDirectory(ProtectedWebTextBox.Text);                                  
-                TransferDirectory(VulnerableWebTextBox.Text);             
+                CheckTextBoxField();
+                if (!oldePathWebProtected.Equals(ProtectedWebTextBox.Text)) { TransferDirectory(ProtectedWebTextBox.Text); }
+                if (!oldPathWebNotProtected.Equals(VulnerableWebTextBox.Text)) { TransferDirectory(VulnerableWebTextBox.Text); }                   
                 DeleteOldFiles(VulnerableWebTextBox.Text, ProtectedWebTextBox.Text);
                 UploadVulnerableWebButton.IsEnabled = false;
                 VulnerableWebTextBox.IsEnabled = false;
@@ -174,11 +177,11 @@ namespace CounselorApp.Administrator
                         DeleteDirectory(GetPathOfServerInSourceDirectory(oldePathWebProtected));                       
                     }
                 }
-                if (!GetPathOfServerInSourceDirectory(VulnerableWeb).Equals(GetPathOfServerInSourceDirectory(oldePathWebProtected)))
+                if (!GetPathOfServerInSourceDirectory(VulnerableWeb).Equals(GetPathOfServerInSourceDirectory(oldPathWebNotProtected)))
                 {
-                    if (Directory.Exists(GetPathOfServerInSourceDirectory(oldePathWebProtected)))
+                    if (Directory.Exists(GetPathOfServerInSourceDirectory(oldPathWebNotProtected)))
                     {
-                        DeleteDirectory(GetPathOfServerInSourceDirectory(oldePathWebProtected));
+                        DeleteDirectory(GetPathOfServerInSourceDirectory(oldPathWebNotProtected));
                     }
                 }         
             }
@@ -357,11 +360,7 @@ namespace CounselorApp.Administrator
             {
                 throw new Exception("Exception  while trying to  Update Advice to the DB", ex);
             }
-
         }
-
-
-
         #endregion Private Methods
 
         #region Public Methods

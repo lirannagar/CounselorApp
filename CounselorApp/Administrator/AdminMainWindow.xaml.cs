@@ -22,20 +22,24 @@ namespace CounselorApp.Administrator
 
 
 
+
         #region Control Mapping
         #endregion Control Mapping
 
 
-        #region Members        
+        #region Members 
+        private string nameAdmin;
         #endregion Members
 
 
         #region Constructor
-        public AdminMainWindow()
+        public AdminMainWindow(string nameAdmin)
         {
             try
             {
                 InitializeComponent();
+                this.nameAdmin = nameAdmin;
+                logInLebal.Content = nameAdmin;
                 Logger.Instance.Info("AdminMainWindow()");
             }catch(Exception ex)
             {
@@ -54,7 +58,7 @@ namespace CounselorApp.Administrator
         {
             try
             {
-                var advice = new MenageAdvice();
+                var advice = new MenageAdvice(this.nameAdmin);
                 advice.Show();
                 this.Close();
                 Logger.Instance.Info("ClickAdvisesButton()");
@@ -64,12 +68,26 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to open MenageAdvice window", ex);
             }
         }
-        #endregion Private Methods
 
+
+        private void ClickOnBackButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var main = new MainWindow();
+                main.Show();
+                this.Close();
+                Logger.Instance.Info("ClickOnBackButton()");
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Error("Error while trying to  Click On Back Button window", ex);
+            }
+        }
+        #endregion Private Methods
 
         #region Public Methods
         #endregion Public Methods
-
 
 
     }

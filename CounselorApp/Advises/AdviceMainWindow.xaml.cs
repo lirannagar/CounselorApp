@@ -5,7 +5,6 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-using CodeGenerator;
 
 namespace CounselorApp.Advises
 {
@@ -35,7 +34,7 @@ namespace CounselorApp.Advises
             {
                 var advices = new List<string>();
                 cmd.Connection = OracleSingletonConnection.Instance;
-                string advice = "select advises.ID_ADVISE from advises";
+                string advice = "SELECT * FROM ADVISES ORDER BY ID_ADVISE";
                 cmd.CommandText = advice;
                 int startId = Convert.ToInt32(cmd.ExecuteScalar());
                 cmd.CommandText = "select count(ID_ADVISE) from advises";
@@ -70,7 +69,7 @@ namespace CounselorApp.Advises
             if (!ComboBoxAdvices.SelectedValue.ToString().Contains(CHOOSE_ADVICE_STRING))
             {
                 string nameClassToUpdate = TEMPLATE_NEW_CLASS + ComboBoxAdvices.SelectedValue.ToString();
-                GenerateAdviceCode(nameClassToUpdate.Replace(" ","_"));
+                //GenerateAdviceCode(nameClassToUpdate.Replace(" ","_"));
                 var adviceWindow = new SecurityAdviceWidnow(ComboBoxAdvices.SelectedValue.ToString())
                 {
                     Title = "Security Advice agaist " + ComboBoxAdvices.SelectedValue
@@ -83,17 +82,17 @@ namespace CounselorApp.Advises
         /// Update The Advice page with his servers
         /// </summary>
         /// <param name="adviceClassName">Class name to update</param>
-        private void GenerateAdviceCode(string adviceClassName)
-        {
-            string className = CLASS_NAME;
-            string classnamespace = NAME_SPACE_NAME;
-            string dir = DIRECTORY_NAME;
-            string project = PROJECT_NAME;
-            var cds = new SecurityAdviceUpdatePage();
-            CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, classnamespace, adviceClassName);
-            cds.GenerateCode(newClassCode, className);
-            cds.SwitchClass(className, Directory.GetCurrentDirectory(), project, dir);
-        }
+        //private void GenerateAdviceCode(string adviceClassName)
+        //{
+        //    string className = CLASS_NAME;
+        //    string classnamespace = NAME_SPACE_NAME;
+        //    string dir = DIRECTORY_NAME;
+        //    string project = PROJECT_NAME;
+        //    var cds = new SecurityAdviceUpdatePage();
+        //    CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, classnamespace, adviceClassName);
+        //    cds.GenerateCode(newClassCode, className);
+        //    cds.SwitchClass(className, Directory.GetCurrentDirectory(), project, dir);
+        //}
 
         /// <summary>
         /// Back to the login window

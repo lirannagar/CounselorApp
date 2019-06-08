@@ -3,6 +3,7 @@ using CounselorApp.Advises;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Windows;
+using System.Windows.Media;
 #pragma warning disable CS0162
 
 
@@ -16,12 +17,17 @@ namespace CounselorApp
 
         #region Control Mapping
         const string CHOOSE_OPETION_STRING = "Choose role";
-        const string REGULAR_USER_STRING = "Regular user";
+        const string REGULAR_USER_STRING = "Regular User";
+        const string MASTER_STRING = "Master";
+        const string MASTER_CODE = "A100";
+
+
         #endregion Control Mapping
 
         #region Members
         private OracleCommand cmd;
         #endregion Members
+
 
         static bool firstTimeEnter = true;
 
@@ -29,6 +35,7 @@ namespace CounselorApp
         public MainWindow()
         {
             InitializeComponent();
+            cmd = new OracleCommand();
             if (firstTimeEnter)
             {
                 Logger.Instance.Info("--------------------------------------------PROGRAM STARTED--------------------------------------------");
@@ -36,9 +43,6 @@ namespace CounselorApp
                 SwitchAdminUser();
                 firstTimeEnter = false;
             }
-            var admin = new AddNewAdvice();
-            admin.Show();
-            this.Close();
         }
         #endregion Constructor
 
@@ -50,11 +54,10 @@ namespace CounselorApp
         {
             try
             {
-                cmd = new OracleCommand();
                 OracleSingletonConnection.Instance.Open();
                 Logger.Instance.Info("OpenConnection()");
             }
-            catch (OracleException ex)
+            catch (Exception ex)
             {
                 Logger.Instance.Error("Exeption while trying to open DB\n Details:\n", ex);
             }
@@ -68,29 +71,34 @@ namespace CounselorApp
         {
             try
             {
-                string inputUserName = UserNameText.Text;
+                string inputUserName = UserNameText.Text.ToUpper();
                 string inputPassword = PasswordText.Password.ToString();
                 string inputRole = RoleComboBox.Text;
                 if (inputRole.Equals(REGULAR_USER_STRING))
                 {
                     var adviceWindow = new AdviceMainWindow();
                     adviceWindow.Show();
-                    this.Close();
-                }
-                CheckInputLogInWindow(inputUserName, inputPassword, inputRole);
-                string userFromDB = GetUserNameFromDB(inputUserName);
-                string passwordFromDB = GetUserPasswordDB(inputUserName);
-                string roleFromDB = GetRoleFromDB(inputUserName);
-
-                if (inputUserName.Equals(userFromDB) && inputPassword.Equals(passwordFromDB) && inputRole.Equals(roleFromDB))
-                {
-
-
-
+                    this.Close();                                       
                 }
                 else
                 {
-                    throw new Exception("One of the values is incorrect");
+                    CheckInputLogInWindow(inputUserName, inputPassword, inputRole);
+                    string userFromDB = GetUserNameFromDB(inputUserName);
+                    string passwordFromDB = GetUserPasswordDB(inputUserName);
+                    string roleFromDB = GetRoleFromDB(inputUserName);
+                    if (inputRole.Equals(MASTER_STRING)) { inputRole = MASTER_CODE; }
+                    if (inputUserName.Equals(userFromDB) && inputPassword.Equals(passwordFromDB) && inputRole.Equals(roleFromDB))
+                    {
+                        var admin = new AdminMainWindow(userFromDB);
+                        admin.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        ErrorLebal.Content = "One of the values is incorrect!";
+                        ErrorLebal.Visibility = Visibility.Visible;
+                        throw new Exception("One of the values is incorrect");
+                    }
                 }
                 Logger.Instance.Info("ClickLogInButton()");
             }
@@ -110,18 +118,21 @@ namespace CounselorApp
         {
             if (string.IsNullOrEmpty(_inputUserName))
             {
-                MessageBox.Show("Please choose User Name!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorLebal.Content = "Please choose User Name!";
+                ErrorLebal.Visibility = Visibility.Visible;
                 throw new Exception("user name not choosed");
             }
             if (string.IsNullOrEmpty(_inputPassword))
             {
-                MessageBox.Show("Please choosep Password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorLebal.Content = "Please choosep Password!";
+                ErrorLebal.Visibility = Visibility.Visible;
                 throw new Exception("user name not choosed");
             }
 
             if (_role.Equals(CHOOSE_OPETION_STRING))
             {
-                MessageBox.Show("Please choose role opetion!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorLebal.Content = "Please choose role opetion!";
+                ErrorLebal.Visibility = Visibility.Visible;
                 throw new Exception("role not choosed");
             }
         }
@@ -174,7 +185,12 @@ namespace CounselorApp
               + " FROM USERS "
               + " WHERE USERS.USER_NAME like '" + userName + "'";
             cmd.CommandText = password;
-            namePasswod = Convert.ToString(cmd.ExecuteScalar());
+            try
+            {
+                namePasswod = Convert.ToString(cmd.ExecuteScalar());
+            }
+            catch { }
+
             Logger.Instance.Info("GetUserPassword( " + userName + " )");
             return namePasswod;
         }
@@ -190,13 +206,18 @@ namespace CounselorApp
             cmd.Connection = OracleSingletonConnection.Instance;
             string user = "select USERS.USER_NAME "
                           + " FROM USERS "
-                          + " WHERE USERS.USER_NAME like '" + userName.ToUpper() + "'";
+                          + " WHERE USERS.USER_NAME like '" + userName + "'";
             cmd.CommandText = user;
-            nameID = Convert.ToString(cmd.ExecuteScalar());
+            try
+            {
+                nameID = Convert.ToString(cmd.ExecuteScalar());
+            }
+            catch { }
             if (string.IsNullOrEmpty(nameID))
             {
+                ErrorLebal.Content = "One of the fields is incorrect!";
+                ErrorLebal.Visibility = Visibility.Visible;
                 throw new Exception("User name not exist or whrong");
-                MessageBox.Show("User name not exist or whrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return nameID;
         }

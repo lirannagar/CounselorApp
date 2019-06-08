@@ -40,7 +40,6 @@ C:\Users\Liran\Desktop\CounselorApp-master\CounselorApp\obj\Debug\CounselorApp.p
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CounselorApp.exe.config
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CounselorApp.exe
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CounselorApp.pdb
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CodeGenerator.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\EntityFramework.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Logger.dll
@@ -52,7 +51,6 @@ C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.AvalonDock.
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Xceed.Wpf.Toolkit.dll
-C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\CodeGenerator.pdb
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Logger.pdb
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\Logger.dll.config
 C:\Users\Liran\Desktop\CounselorApp\CounselorApp\bin\Debug\EntityFramework.xml

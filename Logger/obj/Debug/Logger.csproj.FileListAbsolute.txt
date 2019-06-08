@@ -38,3 +38,4 @@ C:\Users\Liran\Desktop\CounselorApp\Logger\bin\Debug\sv\Xceed.Wpf.AvalonDock.res
 C:\Users\Liran\Desktop\CounselorApp\Logger\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Liran\Desktop\CounselorApp\Logger\obj\Debug\Logger.dll
 C:\Users\Liran\Desktop\CounselorApp\Logger\obj\Debug\Logger.pdb
+C:\Users\Liran\Desktop\CounselorApp\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache

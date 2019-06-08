@@ -21,6 +21,7 @@
         <Button x:Name="UploadVulnerableWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="383,432,0,0" VerticalAlignment="Top" Width="78" Click="ClickUploadVulnerableWebButton"/>
         <Button x:Name="UploadProtectedWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="383,456,0,0" VerticalAlignment="Top" Width="78" Click="ClickUploadProtectedWebButton"/>
         <Button x:Name="UploadFile" Content="Update" HorizontalAlignment="Left" Margin="160,480,0,0" VerticalAlignment="Top" Width="301" Click="UpdateButtonClick"/>
+        <Label x:Name="logInLebal" Content="" HorizontalAlignment="Left" Margin="441,10,0,0" VerticalAlignment="Top" Width="76" FontSize="9"  FontWeight="Bold" Foreground="Green"/>
         <RichTextBox x:Name="BodyTextBox" HorizontalAlignment="Left" Height="304" Margin="70,90,0,0" VerticalAlignment="Top" Width="391">
             <FlowDocument>
                 <Paragraph>

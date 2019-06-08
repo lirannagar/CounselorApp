@@ -10,5 +10,7 @@
     <Grid>
         <Button x:Name="SecurityAdviserButton" Content="Menage Security Adviser" HorizontalAlignment="Left" Margin="68,47,0,0" VerticalAlignment="Top" Width="146" Click="ClickSecurityAdviser"/>
         <Button x:Name="AdvisesButton" Content="Menage Advises" HorizontalAlignment="Left" Margin="68,88,0,0" VerticalAlignment="Top" Width="146" Click="ClickAdvisesButton"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="49" Click="ClickOnBackButton"/>
+        <Label x:Name="logInLebal" Content="" HorizontalAlignment="Left" Margin="187,7,0,0" VerticalAlignment="Top" Width="76" FontSize="9"  FontWeight="Bold" Foreground="Green"/>
     </Grid>
 </Window>

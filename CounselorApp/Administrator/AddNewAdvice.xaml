@@ -14,7 +14,7 @@
         <Label x:Name="WebServerProtectedLabel"   Content="Web Server Protected:" HorizontalAlignment="Left" Margin="20,450,0,0" VerticalAlignment="Top"/>
         <Label x:Name="WebServerVulnerableLabel"   Content="Vulnerable Web Server:" HorizontalAlignment="Left" Margin="20,426,0,0" VerticalAlignment="Top"/>
         <xctk:WatermarkTextBox x:Name="NameTextBox" Watermark="Name Attack" HorizontalAlignment="Left" Margin="70,52,0,0" VerticalAlignment="Top" Width="154"/>
-        
+
         <TextBox x:Name="VulnerableWebTextBox" HorizontalAlignment="Left" Margin="160,433,0,0" VerticalAlignment="Top" Width="218"/>
         <TextBox x:Name="ProtectedWebTextBox" HorizontalAlignment="Left" Margin="160,457,0,0" VerticalAlignment="Top" Width="218"/>
         <Button x:Name="UploadVulnerableWebButton" Content="Browse File" HorizontalAlignment="Left" Margin="383,432,0,0" VerticalAlignment="Top" Width="78" Click="ClickUploadVulnerableWebButton"/>
@@ -30,5 +30,10 @@
         <Label x:Name="LebalSourceAdvice" Content="Source Advice:" HorizontalAlignment="Left" Margin="21,399,0,0" VerticalAlignment="Top"/>
         <xctk:WatermarkTextBox x:Name="SourceAdviceTextBox"  HorizontalAlignment="Left" Height="23" Margin="161,405,0,0" TextWrapping="Wrap" Watermark="URL Source" VerticalAlignment="Top" Width="216"/>
         <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="75" Click="ClickOnBack"/>
+        <Label x:Name="logInLebal" Content="" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="76" FontSize="9"  FontWeight="Bold" Foreground="Green"/>
+
+
+        <Label x:Name="ErrorMSG" Content="" HorizontalAlignment="Left" Margin="197,19,0,0" VerticalAlignment="Top" Width="133" FontSize="9"  FontWeight="Bold" Visibility="Collapsed" Foreground="Red"/>
+
     </Grid>
 </Window>

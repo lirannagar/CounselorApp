@@ -8,8 +8,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Security Advice Widnow" Height="449.73" Width="504.8">
     <Grid>
-        <Button x:Name="webProtectedButton" Content="Protected Web" HorizontalAlignment="Left" Margin="24,360,0,0" VerticalAlignment="Top" Width="141" Height="26" Click="ClickProtectedWeb"/>
-        <Button x:Name="webNotProtectedButton" Content="Vulnerable Web" HorizontalAlignment="Left" Margin="337,360,0,0" VerticalAlignment="Top" Width="142" Height="26" Click="ClickVulnerableWeb"/>
+        <Button x:Name="webProtectedButton" Content="Open Protected Web" HorizontalAlignment="Left" Margin="20,342,0,0" VerticalAlignment="Top" Width="141" Height="26" Click="ClickProtectedWeb"/>
+        <Button x:Name="webNotProtectedButton" Content="Open Vulnerable Web" HorizontalAlignment="Left" Margin="337,342,0,0" VerticalAlignment="Top" Width="142" Height="26" Click="ClickVulnerableWeb"/>
         <RichTextBox x:Name="BodyTextBox" IsEnabled="False" HorizontalAlignment="Left" Height="278" Margin="19,43,0,0" VerticalAlignment="Top" Width="460">
             <FlowDocument>
                 <Paragraph>
@@ -17,7 +17,8 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button x:Name="OpenSourceButton" Content="Open Source" HorizontalAlignment="Left" Margin="201,360,0,0" VerticalAlignment="Top" Width="102" Height="24" Click="ClickOnOpenSource"/>
+        <Button x:Name="OpenSourceButton" Content="Open Source" HorizontalAlignment="Left" Margin="201,344,0,0" VerticalAlignment="Top" Width="102" Height="24" Click="ClickOnOpenSource"/>
         <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="20,13,0,0" VerticalAlignment="Top" Width="75" Click="ClickOnBackButton"/>
+        <Button x:Name="ShutDownButton" Content="Shut Down Servers" HorizontalAlignment="Left" Margin="337,383,0,0" VerticalAlignment="Top" Width="142" Click="ShutDownClick"/>
     </Grid>
 </Window>

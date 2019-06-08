@@ -2,15 +2,12 @@
 
 namespace CounselorApp.Administrator
 {
-    using CodeGenerator;
+
     using Oracle.ManagedDataAccess.Client;
     using System;
-    using System.CodeDom;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Net;
-    using System.Net.Sockets;
     using System.Windows;
     using System.Windows.Documents;
     using System.Windows.Forms;
@@ -20,21 +17,22 @@ namespace CounselorApp.Administrator
     public partial class AddNewAdvice : Window
     {
         #region Control Mapping
-        const string PROJECT_NAME = "CodeGenerator";
-        const string NAME_SPACE_NAME = "CodeGenerator";
-        const string TEMPLATE_NEW_CLASS = "Web_Server_Agaist_";
         #endregion Control Mapping
 
 
         #region Members
         private OracleCommand cmd;
+        private string nameAdmin;
+        private string textBoxBody;
         #endregion Members
 
 
         #region Constructor
-        public AddNewAdvice()
+        public AddNewAdvice(string nameAdmin)
         {
             InitializeComponent();
+            this.nameAdmin = nameAdmin;
+            logInLebal.Content = nameAdmin;
             cmd = new OracleCommand();
             Logger.Instance.Info("AddNewAdvice()");
         }
@@ -42,7 +40,11 @@ namespace CounselorApp.Administrator
 
 
         #region Private Methods
-
+        /// <summary>
+        /// Upload to the system web server that vulnerable agaist the attack 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClickUploadVulnerableWebButton(object sender, RoutedEventArgs e)
         {
             try
@@ -57,7 +59,11 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to Click Upload Vulnerable Web Button  ", ex);
             }
         }
-
+        /// <summary>
+        /// Upload to the system web server that protected agaist the attack 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClickUploadProtectedWebButton(object sender, RoutedEventArgs e)
         {
             try
@@ -72,32 +78,30 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to Click Upload Protected Web Button ", ex);
             }
         }
-
+        /// <summary>
+        /// Upload all the data to the Causelor App
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UploadButton(object sender, RoutedEventArgs e)
         {
             try
             {
-                string className = TEMPLATE_NEW_CLASS + NameTextBox.Text;
-                string nameSpace = NAME_SPACE_NAME;
-                string project = PROJECT_NAME;
+               // CheckValues();
                 TransferDirectory(ProtectedWebTextBox.Text);
                 TransferDirectory(VulnerableWebTextBox.Text);
-                string pathToCreateServer = GetPathOfServerInSourceDirectory(VulnerableWebTextBox.Text);
-                string nameFile = GetNameOfFileToStartTheServer(pathToCreateServer);
-                var cds = new ClassGenerator();
-                cds.SetIPAddress(GetLocalIPAddress());
-                className = className.Replace(" ", "_");
-                CodeCompileUnit newClassCode = cds.GenerateCSharpCode(className, nameSpace, pathToCreateServer, nameFile);
-                cds.GenerateCode(newClassCode, className);
-                cds.AddClassToSolution(className, Directory.GetCurrentDirectory(), project);
-
                 UploadVulnerableWebButton.IsEnabled = false;
                 VulnerableWebTextBox.IsEnabled = false;
                 UploadProtectedWebButton.IsEnabled = false;
                 ProtectedWebTextBox.IsEnabled = false;
+                SourceAdviceTextBox.IsEnabled = false;
                 UploadFile.IsEnabled = false;
+                NameTextBox.IsEnabled = false;
+                BodyTextBox.Document.IsEnabled = false;
+
 
                 string bodyAdviceText = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd).Text;
+                this.textBoxBody = bodyAdviceText;
                 cmd.Connection = OracleSingletonConnection.Instance;
                 cmd.CommandText = "SELECT advice_seq.nextval from dual";
                 string id = Convert.ToInt32(cmd.ExecuteScalar()).ToString();
@@ -109,18 +113,31 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to Click Upload Protected Web Button  ", ex);
             }
         }
-
         /// <summary>
-        /// Shuold return the single file that responsible to start the server
+        /// Check if all field are correct
         /// </summary>
-        /// <param name="pathToCreateServer">Path of the diretory of the server</param>
-        /// <returns></returns>
-        private string GetNameOfFileToStartTheServer(string pathToCreateServer)
-        { 
-            string pathOfTheFile = Directory.GetFiles(pathToCreateServer).Where(m => m.Contains(".js") || m.Contains(".exe")).FirstOrDefault();
-            List<string> listPath = pathOfTheFile.Split('\\').ToList();
-            return listPath[listPath.Count - 1];
+        private void CheckValues()
+        {
+            if (!SourceAdviceTextBox.Text.Contains("http://"))
+            {
+                throw new Exception("Source must be an URL");
+                ErrorMSG.Visibility = Visibility.Visible;
+                ErrorMSG.Content = "Source must be an URL";
+            }
+
+            if (string.IsNullOrEmpty(NameTextBox.Text) ||
+                string.IsNullOrEmpty(textBoxBody) ||
+                string.IsNullOrEmpty(textBoxBody) ||
+                string.IsNullOrEmpty(ProtectedWebTextBox.Text) ||
+                string.IsNullOrEmpty(VulnerableWebTextBox.Text))
+            {
+                throw new Exception("Some values are empty");
+                ErrorMSG.Visibility = Visibility.Visible;
+                ErrorMSG.Content = "Some values are empty";
+            }
         }
+
+
 
         /// <summary>
         /// Transfer Directory to the System Directory 
@@ -160,7 +177,15 @@ namespace CounselorApp.Administrator
             }
 
         }
-
+        /// <summary>
+        /// Inserting all the information to the Oracle DB
+        /// </summary>
+        /// <param name="id">Automatic ID</param>
+        /// <param name="Name">Name of attack</param>
+        /// <param name="body">Body of the advice</param>
+        /// <param name="pathProtected">Protected Web server path</param>
+        /// <param name="pathVulnerable">Vulnerable web server path</param>
+        /// <param name="source">Source of the advice URL</param>
         private void InsertDataToDB(string id, string Name, string body, string pathProtected, string pathVulnerable, string source)
         {
             try
@@ -180,11 +205,16 @@ namespace CounselorApp.Administrator
             }
 
         }
+        /// <summary>
+        /// Back to the admin main window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClickOnBack(object sender, RoutedEventArgs e)
         {
             try
             {
-                var adminWindow = new MenageAdvice();
+                var adminWindow = new MenageAdvice(this.nameAdmin);
                 adminWindow.Show();
                 this.Close();
                 Logger.Instance.Info("ClickOnBack()");
@@ -194,24 +224,8 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Exception while trying to click on back button", ex);
             }
         }
-        /// <summary>
-        /// Get the local IP address
-        /// </summary>
-        /// <returns></returns>
-        private string GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
-        }
-        #endregion Private Methods
 
+        #endregion Private Methods
 
         #region Public Methods
         #endregion Public Methods
