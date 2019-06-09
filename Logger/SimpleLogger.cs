@@ -17,11 +17,13 @@ namespace Logger
         /// Initiate an instance of SimpleLogger class constructor.
         /// If log file does not exist, it will be created automatically.
         /// </summary>
-        public SimpleLogger()
+        public SimpleLogger(string name = null)
         {
             datetimeFormat = "yyyy-MM-dd HH:mm:ss.fff";
-            logFilename = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + FILE_EXT;
-
+            if (string.IsNullOrEmpty(name))
+                logFilename = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + FILE_EXT;
+            else
+                logFilename = name + FILE_EXT;
             // Log file header line
             string logHeader = logFilename + " is created.";
             if (!System.IO.File.Exists(logFilename))
@@ -43,7 +45,7 @@ namespace Logger
         /// Log an ERROR message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Error(string text,Exception ex)
+        public void Error(string text, Exception ex)
         {
             WriteFormattedLog(LogLevel.ERROR, text + " " + ex);
         }
@@ -147,6 +149,6 @@ namespace Logger
 
     }
 
- 
+
 
 }

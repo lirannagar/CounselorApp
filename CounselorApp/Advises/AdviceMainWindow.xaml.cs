@@ -28,7 +28,7 @@ namespace CounselorApp.Advises
         #endregion Members
 
         #region Properties
-        List<string> ListOfAdvices
+       public List<string> ListOfAdvices
         {
             get
             {
@@ -69,7 +69,6 @@ namespace CounselorApp.Advises
             if (!ComboBoxAdvices.SelectedValue.ToString().Contains(CHOOSE_ADVICE_STRING))
             {
                 string nameClassToUpdate = TEMPLATE_NEW_CLASS + ComboBoxAdvices.SelectedValue.ToString();
-                //GenerateAdviceCode(nameClassToUpdate.Replace(" ","_"));
                 var adviceWindow = new SecurityAdviceWidnow(ComboBoxAdvices.SelectedValue.ToString())
                 {
                     Title = "Security Advice agaist " + ComboBoxAdvices.SelectedValue

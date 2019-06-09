@@ -83,7 +83,7 @@ namespace CounselorApp.Administrator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UploadButton(object sender, RoutedEventArgs e)
+        public void UploadButton(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -98,8 +98,6 @@ namespace CounselorApp.Administrator
                 UploadFile.IsEnabled = false;
                 NameTextBox.IsEnabled = false;
                 BodyTextBox.Document.IsEnabled = false;
-
-
                 string bodyAdviceText = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd).Text;
                 this.textBoxBody = bodyAdviceText;
                 cmd.Connection = OracleSingletonConnection.Instance;
@@ -186,7 +184,7 @@ namespace CounselorApp.Administrator
         /// <param name="pathProtected">Protected Web server path</param>
         /// <param name="pathVulnerable">Vulnerable web server path</param>
         /// <param name="source">Source of the advice URL</param>
-        private void InsertDataToDB(string id, string Name, string body, string pathProtected, string pathVulnerable, string source)
+        public void InsertDataToDB(string id, string Name, string body, string pathProtected, string pathVulnerable, string source)
         {
             try
             {
@@ -228,6 +226,17 @@ namespace CounselorApp.Administrator
         #endregion Private Methods
 
         #region Public Methods
+        public void SetName(string name)
+        {
+            NameTextBox.Text = name;
+        }
+
+        public void SetBody(string body)
+        {
+            string bodyAdviceText = new TextRange(BodyTextBox.Document.ContentStart, BodyTextBox.Document.ContentEnd).Text;
+
+        }
+
         #endregion Public Methods
 
 

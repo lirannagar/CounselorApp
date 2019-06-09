@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Microsoft.VisualStudio.TestTools.UITest.Input;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -17,64 +18,38 @@ namespace UnitTests
     /// Summary description for CodedUITest1
     /// </summary>
     [CodedUITest]
-    public class Caunselor_Test 
+    public class Caunselor_Test
     {
-        
+
         public Caunselor_Test()
         {
+            LoggerTest.Instance.Info("Test Started");
+            var main = new MainWindow();        
         }
 
 
 
         [TestMethod]
-        public void TestInit()
+        public void TestInitSanityCounselor()
         {
-            
-          //  Logger.For(LoggerType.Automation).Info("[TestInitialize] started");
-          
+            var testSanity = new Sanity_Counselor();
+            testSanity.Step1();
+            testSanity.Step2();
+            testSanity.Step3();
         }
 
         [TestMethod]
-        public void CodedUITestMethod1()
+        public void TestInitServers()
         {
-            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+            var serverSanity = new Sanity_Server();
+            serverSanity.Step1();
+            serverSanity.Step2();
+            serverSanity.Step3();
+            serverSanity.Step4();
+            serverSanity.Step5();
         }
 
-        #region Additional test attributes
 
-        // You can use the following additional attributes as you write your tests:
-
-        ////Use TestInitialize to run code before running each test 
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
-
-        ////Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
-
-        #endregion
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-        private TestContext testContextInstance;
     }
+ 
 }

@@ -9,6 +9,7 @@ namespace CounselorApp.Advises
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Net.NetworkInformation;
     using System.Net.Sockets;
     using System.Windows;
     using System.Windows.Documents;
@@ -195,25 +196,16 @@ namespace CounselorApp.Advises
         /// Get the local IP address
         /// </summary>
         /// <returns></returns>
-        private string GetLocalIPAddress()
+        public static string GetWirelessIPAddress()
         {
-            try
-            {
-                var host = Dns.GetHostEntry(Dns.GetHostName());
-                foreach (var ip in host.AddressList)
-                {
-                    if (ip.AddressFamily == AddressFamily.InterNetwork)
-                    {
-                        return ip.ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
 
-                throw new Exception("No network adapters with an IPv4 address in the system!", ex);
-            }
-            return null;
+            return NetworkInterface
+            .GetAllNetworkInterfaces()
+            .Where(i => i.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
+            .SelectMany(i => i.GetIPProperties().UnicastAddresses)
+            .Where(a => a.Address.AddressFamily == AddressFamily.InterNetwork)
+            .Select(a => a.Address.ToString())
+            .ToList()[2];
         }
 
 
@@ -297,7 +289,7 @@ namespace CounselorApp.Advises
         {
             try
             {
-                Process.Start("http://" + GetLocalIPAddress() + ":3000");
+                Process.Start("http://" + GetWirelessIPAddress() + ":3000");
             }
             catch (Exception ex)
             {
@@ -308,7 +300,7 @@ namespace CounselorApp.Advises
         {
             try
             {
-                Process.Start("http://" + GetLocalIPAddress() + ":3001");
+                Process.Start("http://" + GetWirelessIPAddress() + ":3001");
             }
             catch (Exception ex)
             {

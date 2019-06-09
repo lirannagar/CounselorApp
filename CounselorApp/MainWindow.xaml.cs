@@ -48,21 +48,6 @@ namespace CounselorApp
 
         #region Private Methods
         /// <summary>
-        /// Open Connection with the oracle database
-        /// </summary>
-        private void OpenConnection()
-        {
-            try
-            {
-                OracleSingletonConnection.Instance.Open();
-                Logger.Instance.Info("OpenConnection()");
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.Error("Exeption while trying to open DB\n Details:\n", ex);
-            }
-        }
-        /// <summary>
         /// LogIn Button to the Caunselor System
         /// </summary>
         /// <param name="sender"></param>
@@ -137,23 +122,7 @@ namespace CounselorApp
             }
         }
 
-        /// <summary>
-        /// Switch between Users 
-        /// </summary>
-        private void SwitchAdminUser()
-        {
-            try
-            {
-                OracleSingletonConnection.Instance.Close();
-                OracleSingletonConnection.Instance.ConnectionString = "DATA SOURCE = localhost:1521/xe;USER ID = LIRAN_NAGAR; PASSWORD=123123";
-                OracleSingletonConnection.Instance.Open();
-                Logger.Instance.Info("SwitchAdminUser()");
-            }
-            catch (OracleException ex)
-            {
-                Logger.Instance.Error("Exption while trying to chenge admin user\n Details:\n", ex);
-            }
-        }
+
         /// <summary>
         /// Get role value from user
         /// </summary>
@@ -224,6 +193,38 @@ namespace CounselorApp
         #endregion Private Methods
 
         #region Public Methods
+        /// <summary>
+        /// Open Connection with the oracle database
+        /// </summary>
+        public void OpenConnection()
+        {
+            try
+            {
+                OracleSingletonConnection.Instance.Open();
+                Logger.Instance.Info("OpenConnection()");
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Error("Exeption while trying to open DB\n Details:\n", ex);
+            }
+        }
+        /// <summary>
+        /// Switch between Users 
+        /// </summary>
+        public void SwitchAdminUser()
+        {
+            try
+            {
+                OracleSingletonConnection.Instance.Close();
+                OracleSingletonConnection.Instance.ConnectionString = "DATA SOURCE = localhost:1521/xe;USER ID = LIRAN_NAGAR; PASSWORD=123123";
+                OracleSingletonConnection.Instance.Open();
+                Logger.Instance.Info("SwitchAdminUser()");
+            }
+            catch (OracleException ex)
+            {
+                Logger.Instance.Error("Exption while trying to chenge admin user\n Details:\n", ex);
+            }
+        }
         #endregion Public Methods        
     }
 }

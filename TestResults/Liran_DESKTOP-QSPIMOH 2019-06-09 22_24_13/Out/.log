@@ -1,0 +1,12 @@
+﻿2019-06-09 22:24:15.846 .log is created.
+2019-06-09 22:24:15.847 [INFO]    --------------------------------------------PROGRAM STARTED--------------------------------------------
+2019-06-09 22:24:16.335 [INFO]    OpenConnection()
+2019-06-09 22:24:16.369 [INFO]    SwitchAdminUser()
+2019-06-09 22:24:16.396 [ERROR]   Exeption while trying to open DB
+ Details:
+ System.InvalidOperationException: Connection is already open
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at CounselorApp.MainWindow.OpenConnection() in C:\Users\Liran\Desktop\CounselorApp\CounselorApp\MainWindow.xaml.cs:line 203
+2019-06-09 22:24:16.404 [INFO]    SwitchAdminUser()
+2019-06-09 22:24:19.666 [INFO]    AddNewAdvice()
+2019-06-09 22:24:21.713 [INFO]    InsertToDB (advice_test)

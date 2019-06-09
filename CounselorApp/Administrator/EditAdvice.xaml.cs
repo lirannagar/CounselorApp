@@ -332,6 +332,9 @@ namespace CounselorApp.Administrator
             }
 
         }
+        #endregion Private Methods
+
+        #region Public Methods
         /// <summary>
         /// Update values into Oracle data base
         /// </summary>
@@ -340,7 +343,7 @@ namespace CounselorApp.Administrator
         /// <param name="pathProtected">Protected web path</param>
         /// <param name="pathVulnerable">Vulnerable web path</param>
         /// <param name="source">Source of advice</param>
-        private void UpdateAdvice(string name, string body, string pathProtected, string pathVulnerable, string source)
+        public void UpdateAdvice(string name, string body, string pathProtected, string pathVulnerable, string source)
         {
             try
             {
@@ -354,16 +357,13 @@ namespace CounselorApp.Administrator
                             "WHERE advice_name like '" + name + "'";
                 cmd.CommandText = updateString;
                 cmd.ExecuteNonQuery();
-                Logger.Instance.Info("UpdateAdvice("+name+")");
+                Logger.Instance.Info("UpdateAdvice(" + name + ")");
             }
             catch (Exception ex)
             {
                 throw new Exception("Exception  while trying to  Update Advice to the DB", ex);
             }
         }
-        #endregion Private Methods
-
-        #region Public Methods
         #endregion Public Methods
 
 

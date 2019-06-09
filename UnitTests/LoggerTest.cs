@@ -12,7 +12,7 @@ namespace UnitTests
             {
                 if (instance == null)
                 {
-                    instance = new SimpleLogger();
+                    instance = new SimpleLogger("Test");
                 }
                 return instance;
             }

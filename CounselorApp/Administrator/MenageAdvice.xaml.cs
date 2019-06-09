@@ -83,10 +83,8 @@ namespace CounselorApp.Administrator
                     throw new Exception("Please choose an opetion");
                 }
                 string choosenAdviceName = ComboBoxAdvices.Text;
-                string deleteStatment = "DELETE FROM advises"
-                                          + " where advises.ADVICE_NAME like '" + choosenAdviceName + "'";
-                cmd.CommandText = deleteStatment;
-                cmd.ExecuteNonQuery();
+                DeleteAdviceFromDB(choosenAdviceName);
+  
                 foreach (var item in ComboBoxAdvices.Items)
                 {
                     if (item.ToString().Equals(choosenAdviceName))
@@ -122,7 +120,6 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to click edit advice button", ex);
             }
         }
-
         private void ClickAddNewAdviceButton(object sender, RoutedEventArgs e)
         {
             try
@@ -138,10 +135,16 @@ namespace CounselorApp.Administrator
                 Logger.Instance.Error("Error while trying to Click Add New Advice Button", ex);
             }
         }
-
         #endregion Private Methods
 
         #region Public Methods
+        public void DeleteAdviceFromDB(string choosenAdviceName)
+        {
+            string deleteStatment = "DELETE FROM advises"
+                            + " where advises.ADVICE_NAME like '" + choosenAdviceName + "'";
+            cmd.CommandText = deleteStatment;
+            cmd.ExecuteNonQuery();
+        }
         #endregion Public Methods
 
 
